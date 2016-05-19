@@ -1,0 +1,205 @@
+\documentclass[10pt,twoside]{estiloUBI}
+
+
+
+
+\include{formatacaoUBI}
+
+\usepackage{fontspec}
+\setmainfont{Trebuchet MS}
+
+
+%%Comentar a linha seguinte se escrever a tese em inglês
+\portugues
+
+
+%%Para índice remissivo
+\makeindex
+
+
+%%Escolher tipo de letra a usar:
+%\usepackage{lmodern}												%Latin modern
+%\usepackage{palatino}												%Palatino
+%\usepackage{times}												%Times
+%\renewcommand{\rmdefault}{trebuchet}										%Trebuchet (caso esteja instalado)
+
+
+%%O comando seguinte insere o nome da tese no cabeçalho das páginas (comentar se não for pretendido)
+\cabecalho{Inserir título da tese aqui (opcional)}
+
+
+
+\begin{document}
+
+%%O comando seguinte insere o espaçamento de 1.5 linhas
+\onehalfspacing
+
+%%Página de rosto
+\pagenumbering{roman}
+\include{PaginaRosto}
+
+%\dominitoc
+
+
+%%Numeração das páginas
+\pagestyle{fancy}
+
+
+%%O comando a seguir gera uma página após a de rosto com cabeçalho e rodapé
+\cleardoublepage
+
+%%O comando a seguir permite que as costas da página de rosto não inclua cabeçalho mas rodapé (escolher entre este e outro)
+%\newpage\mbox{}\thispagestyle{plain}\fancyhead{}
+
+
+%%Dedicatória
+\newpage 
+\section*{\titulos{Dedicatória}}
+\vspace{0.5cm}
+Inserir dedicatória (opcional)
+\cleardoublepage
+%\newpage 	
+%\mbox{}
+%\vfil
+%\begin{center}
+%Dedicated to...
+%\end{center}
+%\vfil
+%\eject
+%\cleardoublepage
+
+
+%%Agradecimentos 
+\newpage 	
+\section*{\titulos{Agradecimentos}}
+\vspace{0.5cm}
+Agradecer a quem de direito (opcional)
+\cleardoublepage
+
+
+%%Prefácio 
+\newpage 	
+\section*{\titulos{Prefácio}}
+\vspace{0.5cm}
+Opcional
+\cleardoublepage
+
+
+%%Resumo+palavras-chave
+\newpage 	
+\section*{\titulos{Resumo}}
+\vspace{0.5cm}
+Resumo do trabalho
+ 
+\vspace{2.2cm}
+{\titulos{Palavras-chave}}
+
+\vspace{0.8cm}
+Inserir palavras-chave
+\cleardoublepage
+
+
+%%Resumo alargado 
+\newpage 	
+\section*{\titulos{Resumo alargado}}
+\vspace{0.5cm}
+Unicamente para teses em língua estrangeira
+\cleardoublepage
+
+
+%%abstract+keywords
+\newpage 	
+\section*{\titulos{Abstract}}
+\vspace{0.5cm}
+Abstract in English
+
+\vspace{2.2cm}
+{\titulos{Keywords}}
+ 
+\vspace{0.8cm}
+Keywords in English
+\cleardoublepage
+
+
+%%Índice
+\tableofcontents
+
+
+%%Lista de figuras
+\listoffigures
+\cleardoublepage	
+
+
+%%Lista de tabelas
+\listoftables
+\cleardoublepage
+
+
+%%Abreviaturas
+\newpage
+\section*{\titulos{Lista de Acrónimos}}
+\vspace{0.5cm}
+  \begin{tabularx}{\linewidth}{c p{0.5cm} Y}
+ 	UBI & & Universidade da Beira Interior\cr
+ 	MPSOCD & & Multi-objective Particle Swarm Optimization Crowding Distance
+ 	\end{tabularx}
+ \cleardoublepage
+  
+
+%% Os capitulos são inseridos a partir daqui 
+ 
+\mainmatter
+
+\include{Intro}
+
+\include{Exemplos}
+
+
+
+
+
+%% Fim da inserção dos capitulos
+
+
+%% Inicio Bibliografia
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliografia}
+%%%%%%%%%%%%%%%%
+% Escolher entre as duas opcções
+%
+% A primeira é a aconselhada pelo despacho reitoral
+% A segunda é a utilizada pelo IEEE
+%
+%Primeira opcção
+\bibliographystyle{estilo-biblio}				%Estilo bibliografia com nomes
+\bibliography{bibliografia}					%Entrada biblbiografia aconselhada com nomes
+%
+% Segunda opcção
+%\bibliographystyle{IEEEtran}					%Estilo bibliografia IEEE
+%\bibliography{IEEEabrv,bibliografia}				%Entrada bibliografia aconselhada para IEEE
+%% Fim Bibliografia
+
+
+%%Anexos
+\appendix
+ 
+\include{Anexos}
+\cleardoublepage
+
+
+%%Glossário
+\newpage
+\section*{\titulos{Glossário}}
+\vspace{0.5cm}
+	\noindent\begin{tabularx}{\linewidth}{l p{0.5cm} Y}
+	\LaTeX & & Conjunto de macros para o processador de textos \TeX, utilizado amplamente para a produção de textos matemáticos e científicos devido à sua alta qualidade tipográfica.\cr
+	\end{tabularx}
+\cleardoublepage
+
+
+
+%%Inserir índice remissivo
+\printindex
+
+\end{document}
