@@ -1,4 +1,4 @@
- %%
+%%
 %% This is a modification of file `book.cls',
 %% generated with the docstrip utility.
 %%
@@ -53,9 +53,14 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{estiloUBI}
-              [2011/06/18 v1.2
- Standard LaTeX document class]
+\ProvidesClass{./template/StyleUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
+
+\usepackage{ifxetex}
+\ifxetex
+\else
+   \RequireXeTeX
+\fi
+
 \newcommand\@ptsize{}
 \newif\if@restonecol
 \newif\if@titlepage
@@ -535,11 +540,17 @@
      \fi
     }
 \fi
-\newcommand\appendix{\par
+
+\newcommand\appendix[1]{
+  \par
   \setcounter{chapter}{0}%
   \setcounter{section}{0}%
   \gdef\@chapapp{\titulos\appendixname}%
-  \gdef\thechapter{\@Alph\c@chapter}}
+  \gdef\thechapter{\@Alph\c@chapter}
+  #1
+  \cleardoublepage
+}
+
 \setlength\arraycolsep{5\p@}
 \setlength\tabcolsep{6\p@}
 \setlength\arrayrulewidth{.4\p@}
@@ -604,7 +615,11 @@
 \newcommand\@tocrmarg{2.55em}
 \newcommand\@dotsep{4.5}
 \setcounter{tocdepth}{2}
+
 \newcommand\tableofcontents{%
+	\phantomsection \label{summary}
+	\addcontentsline{toc}{chapter\label{summary}}{Summary}
+
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -615,7 +630,8 @@
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
 	\@starttoc{toc}%
     \if@restonecol\twocolumn\fi
-    }
+}
+    
 \newcommand*\l@part[2]{%
   \ifnum \c@tocdepth >-2\relax
     \addpenalty{-\@highpenalty}%
@@ -651,7 +667,11 @@
 \newcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
 \newcommand*\l@paragraph{\@dottedtocline{4}{10em}{5em}}
 \newcommand*\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
+
 \newcommand\listoffigures{%
+	\phantomsection \label{listoffigures}
+	\addcontentsline{toc}{chapter\label{listoffigures}}{List of Figures}
+
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -662,9 +682,16 @@
               {\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
-    }
+    
+    \cleardoublepage
+}
+    
 \newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+
 \newcommand\listoftables{%
+	\phantomsection \label{listoftables}
+	\addcontentsline{toc}{chapter\label{listoftables}}{List of Tables}
+
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -676,7 +703,10 @@
          {\MakeUppercase\listtablename}%
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
-    }
+
+	\cleardoublepage
+}
+    
 \let\l@table\l@figure
 \newdimen\bibindent
 \setlength\bibindent{1.5em}

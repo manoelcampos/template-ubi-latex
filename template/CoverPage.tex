@@ -1,0 +1,81 @@
+%O código seguinte será incluído no pdf gerado
+%Mais info: http://www.tug.org/applications/hyperref/manual.html
+\hypersetup {
+pdfmenubar=true,	%Mostrar barra menus
+pdfpagemode=UseNone, %Nenhum modo de páginas
+pdfpagelayout=SinglePage, %Abertura em modo de página simples
+pdffitwindow=true, %Adaptar página à janela
+%
+bookmarksopen=true,
+pdftitle=\thesistitlestr, %Título
+pdfauthor=\thesisauthorsstr, %Autor
+pdfsubject=\thesistypestr, %Assunto
+pdfhighlight=/O, %Efeito ao clicar link
+linkcolor=linkcol, %Cor das ligações internas do documento
+citecolor=citecol, %Cor das referências à bibliografia no texto
+urlcolor=linkcol   %Cor das hiperligações
+}
+
+%%O comando seguinte insere o espaçamento de 1.5 linhas
+\onehalfspacing
+
+%%Página de rosto
+\pagenumbering{roman}
+
+%Início-----------------------
+
+\begin{titlepage}
+\begin{center}
+
+\begin{flushleft}
+\includegraphics[height=2.22cm]{logo}\\
+\rostoubi UNIVERSIDADE DA BEIRA INTERIOR\\
+\rostofac Engenharia\\
+\end{flushleft}
+
+%\vspace{6.5cm} %7.6
+\vspace{5cm} %7.6
+
+\rostotitulo \textbf{\thesistitlestr} \\
+\ifdefined\thesissubtitlestr
+    \rostosubtit \textbf{\thesissubtitlestr}\\
+\fi
+
+%\vspace{1.8cm}
+\vspace{1.4cm}
+
+\rostonomes \textbf{\thesisauthorsstr} \\ Candidate\\
+
+%\vspace{1.4cm}
+\vspace{1cm}
+
+\rostooutros \thesistypestr \\
+\rostonomes \textbf{\thesiscoursestr}\\
+\rostooutros (3\textsuperscript{rd} cycle studies)\\
+
+%\vspace{3.3cm}
+\vspace{1.5cm}
+
+%\rostooutros \thesissupervisorsstr
+\thesissupervisorsstr
+
+%\vspace{1.4cm}
+\vspace{1cm}
+
+\rostooutros \textbf{\thesislocalanddatestr}
+
+\end{center}
+\end{titlepage}
+
+%Fim------------------
+%\dominitoc
+
+%%Numeração das páginas
+\pagestyle{fancy}
+
+
+%%O comando a seguir gera uma página após a de rosto com cabeçalho e rodapé
+\cleardoublepage
+
+%%O comando a seguir permite que as costas da página de rosto não inclua cabeçalho mas rodapé (escolher entre este e outro)
+%\newpage\mbox{}\thispagestyle{plain}\fancyhead{}

@@ -1,8 +1,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Este é o ficheiro formatacaoUBI.tex - NÃO EDITAR excepto a secção hypersetup!
 %% Define a formatação a ser usada em teses apresentadadas na Universidade da Beira Interior
-%% Versão 2.1 - 28/03/2014 - Agora compila com o XeLaTeX por causa do tipo de fonte, incluido o estilo de biblipgrafia IEEE,
-%% possibilidade de escolha de tipo de fonte matemático
+% Versão 2.2 - 15/10/2014 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
+% 	- Padronização do nome dos arquivos para inglês (auxiliando alunos que não falam a língua portuguesa).
+% 	- Alteração de nomes de arquivos para torná-los mais claros, como UbiStyle, UbiFormatting e UbiBibliography.
+% 	- Separação de comandos de dentro do arquivo de formatação para dentro da página de rosto (CoverPage.tex)
+% 	  para evitar alterações diretamente no arquivo de formatação.							
+% 	- Criação dos comandos \thesisauthors \thesistitle \thesissubtitle \thesistype 
+% 	  \thesislocalanddate, \thesissupervisors, \thesisthanks,
+%  	  \thesisdedication, \thesisforewords, \thesisabstract, \thesisresumo, \thesisresumoalargado,
+%     \thesisglossary e \thesisbibliography para definir, no documento tex principal
+% 	  da tese: o nome do autor, o título da tese, o substítulo, o tipo de tese 
+%	  (se é proposta de tese, tese, dissertação), o local e data de publicação,
+%     os orientadores, os agradecimentos, dedicatória, prefácio, abstract, resumo, 
+%     resumo alargado, glossário e o estilo+bibliografia. 
+%     Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
+%     do usuário, reduzindo a probabilidade do usuário alterar o template indevidamente (mesmo que sem querer).
+%     Com estes novos comandos, no arquivo principal (por padrão ThesisProject.tex)
+%     pode-se definir tais variáveis, não precisando mais alterar nada na folha de rosto (CoverPage.tex).
+%   - Inclusão de metadados no arquivo PDF gerado (autor, assunto, etc)
+%   - Renomeado ficheiro FormattingUBI.tex para FormattingUBI.sty, definindo ele como um pacote
+%     e assim usando o mesmo no tex principal com \usepackage{./template/FormattingUBI}
+%   - Incluído o hook \AtBeginDocument para adicionar automaticamente a CoverPage.tex
+%     no início do documento. Assim dentro do \begin{document} do tex principal haverá
+%     apenas conteúdo do documento do utilizador.
+%% Versão 2.1 - 28/03/2014 - Agora compila com o XeLaTeX por causa do tipo de fonte, 
+%                            incluido o estilo de biblipgrafia IEEE,
+%%                           possibilidade de escolha de tipo de fonte matemático
 %% Versão 2.0 - 10/11/2011 - Bibliografia agora aparece no índice
 %% Versão 1.9 - 10/10/2011 - Resolvido problema em que o texto nas tabelas aparecia em cima da linha superior
 %% Versão 1.8 - 12/07/2011 - Legendas são agora centradas
@@ -41,6 +65,7 @@
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\ProvidesPackage{./template/FormattingUBI}[2014/10/15]
 
 % Pacotes a incluir
 \usepackage{mathspec}
@@ -58,9 +83,8 @@
 \usepackage{aecompl}								%Permitir fontes vituais para codificação T1  http://www.ctan.org/tex-archive/fonts/ae
 \usepackage[center,nooneline,font={footnotesize}]{caption}			%Legenda: centrada, tamanho de nota rodapé  http://www.ctan.org/pkg/caption
 \setlength{\parindent}{0pt}							%Sem tabulação em cada novo parágrafo
-%\usepackage{parskip}								%Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
-%\setlength{\parskip}{0.53cm}
-
+\usepackage{parskip}								%Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
+\setlength{\parskip}{0.53cm}
 
 
 %% O código seguinte permite gerar um mini indice de capitulo (não referido no despacho reitoral)
@@ -76,7 +100,7 @@
 %\ifpdf
 %  \usepackage[pdftex]{graphicx}							%Inserir gráficos  http://ctan.org/pkg/graphicx
 \usepackage{graphicx}
-%    \DeclareGraphicsExtensions{.jpg,.png} 					%Pdf directo apenas compativel com jpg, png...
+  \DeclareGraphicsExtensions{.jpg,.png,.pdf} 					%Pdf directo apenas compativel com jpg, png...
   \usepackage[pagebackref,hyperindex=true]{hyperref}				%O pacote hyperref é usada para lidar com comandos referência cruzada  http://ctan.org/pkg/hyperref
 %\else
 %  \usepackage{graphicx}
@@ -85,8 +109,124 @@
 %\fi
 
 
-\graphicspath{{.}{imagens/}}							%Directorio das imagens
+\graphicspath{{.}{images/}{imagens/}}							%Directorio das imagens
 
+%New commands created by Manoel Campos da Silva Filho - http://manoelcampos.com
+\newcommand{\thesisauthors}[1]{\def\thesisauthorsstr{#1}}
+\newcommand{\thesistitle}[1]{\def\thesistitlestr{#1}}
+\newcommand{\thesissubtitle}[1]{\def\thesissubtitlestr{#1}}
+\newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
+\newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
+\newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
+\newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
+
+%%Agradecimentos 
+\newcommand{\thesisthanks}[1]{
+	\newpage 	
+	\section*{\titulos{Acknowledgements}}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+\newcommand{\thesisdedication}[1]{
+	%%Dedicatória
+	\newpage 
+	\section*{\titulos{Dedicatória}}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+	%\newpage 	
+	%\mbox{}
+	%\vfil
+	%\begin{center}
+	%Dedicated to...
+	%\end{center}
+	%\vfil
+	%\eject
+	%\cleardoublepage
+}
+
+\newcommand{\thesisforewords}[1]{
+	%%Prefácio 
+	\newpage 	
+	\section*{\titulos{Prefácio}}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+%Primeiro parametro eh o resumo e o segundo as palavras chaves
+\newcommand{\thesisresumo}[2]{
+	\newpage 	
+	\phantomsection \label{resumo}
+	\addcontentsline{toc}{chapter\label{resumo}}{Resumo}
+	\section*{\titulos{Resumo}}
+	\vspace{0.5cm}
+	#1
+	\vspace{2.2cm}
+	
+	{\titulos{Palavras-chave}}
+	
+	\vspace{0.8cm}
+	#2
+	\cleardoublepage	
+}
+
+\newcommand{\thesisresumoalargado}[1]{
+	%%Resumo alargado 
+	\newpage 	
+	\phantomsection \label{resumo_alargado}
+	\addcontentsline{toc}{chapter\label{resumo_alargado}}{Resumo alargado}	
+	\section*{\titulos{Resumo alargado}}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+%Primeiro parametro eh o abstract e o segundo as keywords
+\newcommand{\thesisabstract}[2]{
+	%abstract+keywords
+	\newpage 	
+	\phantomsection \label{abstract}
+	\addcontentsline{toc}{chapter\label{abstract}}{Abstract}	
+	\section*{\titulos{Abstract}}
+	\vspace{0.5cm}
+	#1
+	
+	\vspace{2.2cm}
+	{\titulos{Keywords}}
+	
+	\vspace{0.8cm}
+	#2
+	\cleardoublepage
+}
+
+
+%O primeiro parâmetro é o estilo e o segundo é o arquivo bib
+\newcommand{\thesisbibliography}[2]{
+	%Bibliografia (bibliography)
+	\cleardoublepage
+	\phantomsection
+	%\addcontentsline{toc}{chapter}{Bibliografia}
+	\renewcommand{\bibname}{References}
+	\addcontentsline{toc}{chapter}{\bibname}
+	
+	\bibliographystyle{#1}
+	\bibliography{#2}
+}
+
+\newcommand{\thesisglossary}[1]{
+	\newpage
+	\phantomsection \label{glossary}
+	\addcontentsline{toc}{chapter\label{glossary}}{Glossário}	
+	\section*{\titulos{Glossário}}
+	\vspace{0.5cm}
+		\noindent
+		#1
+	\cleardoublepage
+}
+%-------------------------------------------------------------------------------
 
 %%Links do pdf
 \usepackage{color}								%Pacote de gestão de cor
@@ -129,7 +269,7 @@
 
 
 %%Para rotação de figuras e tabelas http://www.ctan.org/tex-archive/macros/latex/contrib/rotating
- \usepackage{rotating}
+\usepackage{rotating}
   
 	
 %%Cabeçalho e rodapé http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr
@@ -162,13 +302,13 @@
 \newcommand{\rostofac}{\fontsize{12.5pt}{12.5pt}\selectfont}				%Faculdade: 12.5pt
 
 
-
-
 %%Passar para português
 %\newcommand{\portugues}{\usepackage[portuguese]{babel}		%Descomentar para escrever com regras em Português sem ser em XeLaTeX  http://www.ctan.org/pkg/babel  								% Users of X∃TeX are ad­vised to use poly­glos­sia rather than Ba­bel.
 
 \newcommand{\portugues}{\usepackage{polyglossia} %Comentar para escrever sem ser em modo XeLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
-\setmainlanguage{portuges}                       %Comentar para escrever sem ser em modo XeLaTeX
+%\setmainlanguage{portuges}                       %Comentar para escrever sem ser em modo XeLaTeX
+\setmainlanguage{english} 
+\setotherlanguage{portuges}
 
 \addto\captionsportuguese{\renewcommand{\contentsname}{Índice}}
 \addto\captionsportuguese{\renewcommand{\indexname}{Índice Remissivo}}}
@@ -176,7 +316,6 @@
 %linhas das tabelas e afins
 \usepackage{colortbl}									%Adicionar cor às tabelas  http://www.ctan.org/tex-archive/macros/latex/contrib/colortbl/
 \arrayrulecolor{black}									%Preto
-
 
 %Estilo plain modificado
 \fancypagestyle{plain}{
@@ -268,3 +407,9 @@
 \usepackage{tabularx}					%The pack­age de­fines an en­vi­ron­ment tab­u­larx, an ex­ten­sion of tab­u­lar  http://www.ctan.org/pkg/tabularx
 \usepackage{makeidx}					%Index processor  http://www.ctan.org/tex-archive/indexing/makeindex
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\AtBeginDocument{%
+%\AfterEndPreamble{
+	\include{./template/CoverPage}
+}
+

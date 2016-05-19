@@ -1,0 +1,129 @@
+\documentclass[10pt,twoside]{./template/StyleUBI}
+
+\usepackage{./template/FormattingUBI}
+
+\usepackage{array,verbatim}
+\setmainfont{Trebuchet MS}
+
+%%Comentar a linha seguinte se escrever a tese em inglês
+\portugues
+
+%%Para índice remissivo
+\makeindex
+
+\thesistitle{Título da Tese}
+%\thesissubtitle{An comprehensive approach}
+\thesisauthors{Nome do autor}
+\thesistype{PhD Thesis Proposal}
+\thesislocalanddate{Covilhã, May of 2016.}
+\thesissupervisors{
+	Supervisor: Prof. Doutor Nome\\
+	%Orientador: Prof. PhD Nome\\
+	Co-supervisor: Prof. Doutor Nome\\
+}
+\thesiscourse{Engenharia Informática}
+
+%%Escolher tipo de letra a usar:
+%\usepackage{lmodern} 	%Latin modern
+%\usepackage{palatino} 	%Palatino
+%\usepackage{times} 	%Times
+%\renewcommand{\rmdefault}{trebuchet} 	%Trebuchet (caso esteja instalado)
+
+
+%%O comando seguinte insere o nome da tese no cabeçalho das páginas (comentar se não for pretendido)
+%(Pode ser um título abreviado)
+\cabecalho{\thesistitlestr}
+
+\begin{document}
+%%Dedicatória (se não desejar incluír dedicatório, todo o comando deve ser apagado)
+%Isto vale para todas as seções abaixo.
+\thesisdedication{
+    %Se desejar colocar o conteúdo em um ficheiro tex separado,
+    %ele pode ser incluído usando o comando \input{Nome do ficheiro criado}.
+    %Isto resulta para todas as seções abaixo.
+	Inserir dedicatória (opcional)
+}
+
+%%Agradecimentos 
+\thesisthanks{
+	Agradecer a quem de direito (opcional)
+}
+
+%%Prefácio
+\thesisforewords{
+	Prefácio (Opcional)
+}
+
+%%Resumo+palavras-chave (em português)
+\thesisresumo{
+	Resumo do trabalho
+}
+{Suas, palavras, chaves, separadas, por, vírgula} 	
+
+
+%%Resumo alargado (em português)
+\thesisresumoalargado{
+	Unicamente para teses em língua estrangeira
+} 	
+
+%%abstract+keywords
+\thesisabstract{
+	Abstract in English
+}
+{Your, key, words, separated, by, comma}	
+
+
+\tableofcontents %Índice
+\listoffigures   %Lista de figuras
+\listoftables    %Lista de tabelas
+
+%Lista de Algoritmos (algorithms list)
+\newpage
+\phantomsection \label{listofalgs}
+\addcontentsline{toc}{chapter\label{listofalgs}}{List of Algorithms}
+\listofalgorithms
+\cleardoublepage
+
+
+%%Abreviaturas
+\phantomsection \label{listofabbreviations}
+\addcontentsline{toc}{chapter\label{listofabbreviations}}{List of Abbreviations}
+%%Abreviaturas
+\newpage
+\section*{\titulos{Lista de Acrónimos}}
+\vspace{0.5cm}
+  \begin{tabularx}{\linewidth}{c p{0.5cm} Y}
+ 	UBI & & Universidade da Beira Interior\cr
+ 	MPSOCD & & Multi-objective Particle Swarm Optimization Crowding Distance
+ 	\end{tabularx}
+ \cleardoublepage
+
+
+\mainmatter
+
+%% Os capitulos são inseridos a partir daqui 
+\include{introducao}
+\include{exemplos}
+%% Fim da inserção dos capitulos
+
+%Bibliografia (bibliography)
+%Primeiro parâmetro é o estilo e o segundo o arquivo bib
+\thesisbibliography{./template/BibliographyStyle}{bibliografia}
+%\thesisbibliography{./template/IEEEtran}{references}
+
+%%Anexos
+\appendix{
+	\input{anexos}
+}
+
+%%Glossário
+\thesisglossary{
+	\begin{tabularx}{\linewidth}{l p{0.5cm} Y}
+	\LaTeX & & Conjunto de macros para o processador de textos \TeX, utilizado amplamente para a produção de textos matemáticos e científicos devido à sua alta qualidade tipográfica.\cr
+	\end{tabularx}
+}
+
+%%Inserir índice remissivo
+\printindex
+
+\end{document}
