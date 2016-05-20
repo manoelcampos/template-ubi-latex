@@ -72,6 +72,9 @@ Os ficheiros desta tese de exemplo são listados a seguir.
 
 - **Tese.tex**: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
 - **Intro.tex** e *exemplos.tex*: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
+- **Acronimos.tex**: ficheiro onde deves incluir os acrônimos que estejas a utilizar na tese, para que apareçam na lista de acrônimos;
+- **Anexos.tex**: um exemplo de conteúdo para ir como anexos da tese;
+- **Glossario.tex**: lista de termos que desejas descrever o significado, e assim compor o glossário da tese;
 - **bibliografia.bib**: ficheiro em formato [BibTeX](http://www.bibtex.org) 
   onde se inserem as referências bibliográficas a serem utilizadas na tese. 
   O estilo bibliográfico utilizado é definido pelo modelo, mas pode ser alterado facilmente. 
