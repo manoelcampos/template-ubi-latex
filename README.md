@@ -66,12 +66,12 @@ Adicionalmente deve ser instalada a letra *Trebuchet*, cujas instruções estão
 
 Juntamente com o modelo é disponibilizado um exemplo de tese, a partir do qual
 o utilizador pode editar e escrever sua própria tese. 
-Uma versão compilada para PDF está disponível para visualização no ficheiro [tese.pdf](tese.pdf).
+Uma versão compilada para PDF está disponível para visualização no ficheiro [Tese.pdf](Tese.pdf).
 
 Os ficheiros desta tese de exemplo são listados a seguir.
 
-- **tese.tex**: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
-- **introducao.tex** e *exemplos.tex*: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
+- **Tese.tex**: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
+- **Intro.tex** e *exemplos.tex*: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
 - **bibliografia.bib**: ficheiro em formato [BibTeX](http://www.bibtex.org) 
   onde se inserem as referências bibliográficas a serem utilizadas na tese. 
   O estilo bibliográfico utilizado é definido pelo modelo, mas pode ser alterado facilmente. 
@@ -96,10 +96,10 @@ por meio da linha de comando. Desta forma, tendo o programa *make* instalado
 (que já vem instalado por defeito em sistemas Linux e Mac OSX),
 há os comandos abaixo disponíveis:
 
-- **make** compila a tese de exemplo (ficheiro tese.tex) e se a compilação ocorrer com sucesso, cria o ficheiro tese.pdf; 
+- **make** compila a tese de exemplo (ficheiro Tese.tex) e se a compilação ocorrer com sucesso, cria o ficheiro Tese.pdf; 
 - **make clean** apaga todos os ficheiros temporários criados no processo de compilação.
 
-Se tiveres começado a criar sua tese utilizando um ficheiro diferente do *tese.tex*,
+Se tiveres começado a criar sua tese utilizando um ficheiro diferente do *Tese.tex*,
 para compilar utilizando o comando make, é preciso editar o ficheiro [Makefile](Makefile) 
 e informar o nome do ficheiro tex principal da sua tese na primeira linha do Makefile.
 
@@ -109,12 +109,12 @@ Os ficheiros específicos do modelo podem ser acedidos a partir do directório *
 No entanto, ao menos que tenhas certeza do que estás a fazer, não edite tais ficheiros. 
 A seguir é listado o conteúdo de tal directório.
 
-- **StyleUBI.cls**: ficheiro principal que define o estilo de modelo de tese da UBI;
-- **FormattingUBI.sty**: define detalhes da formatação do modelo;
-- **BibliographyStyle.bst**: define o estilo da bibliografia, que pode ser trocado por qualquer 
+- **estiloUBI.cls**: ficheiro principal que define o estilo de modelo de tese da UBI;
+- **formatacaoUBI.sty**: define detalhes da formatação do modelo;
+- **estilo-biblio.bst**: define o estilo da bibliografia, que pode ser trocado por qualquer 
   outro ficheiro de acordo com a norma a utilizar (deixada em aberto pelo despacho). 
   Se incluíres um novo ficheiro de estilo bibliográfico, o nome deste ficheiro
-  deve ser informado no comando *\thesisbibliography* dentro do ficheiro *tese.tex*.
+  deve ser informado no comando *\thesisbibliography* dentro do ficheiro *Tese.tex*.
   Os ficheiros .bst adicionais são alguns modelos bibliográficos disponibilizados
   por algumas editoras de artigos científicos.
 

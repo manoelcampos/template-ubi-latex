@@ -53,7 +53,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{./template/StyleUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesClass{template/estiloUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 \usepackage{ifxetex}
 \ifxetex
@@ -760,6 +760,7 @@
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
 \newcommand\contentsname{Contents}
+\newcommand\listalgorithmname{List of Algorithms}
 \newcommand\listfigurename{List of Figures}
 \newcommand\listtablename{List of Tables}
 \newcommand\bibname{Bibliography}

@@ -1,0 +1,98 @@
+\documentclass[10pt,twoside]{template/estiloUBI}
+
+\usepackage{template/formatacaoUBI}
+
+\usepackage{array,verbatim}
+\setmainfont{Trebuchet MS}
+
+%%Comentar a linha seguinte se escrever a tese em inglês
+\portugues
+
+%%Para gerar índice remissivo (que será inserido no documento com o comando \printindex)
+\makeindex
+
+\thesistitle{Título da Tese}
+
+% Se existir um sub-título, descomente a linha abaixo e 
+%\thesissubtitle{Sub-título da Tese}
+
+\thesisauthors{Nome do Autor da Tese}
+\thesistype{Tese de Doutoramento}
+\thesislocalanddate{Covilhã, May of 2016.}
+
+\thesissupervisors{
+	Orientador: Prof. Doutor Nome\\
+	Co-orientador: Prof. Doutor Nome\\
+}
+
+\thesiscourse{Nome do seu Curso}
+
+% Escolher tipo de letra a usar:
+% \usepackage{lmodern} 	%Latin modern
+% \usepackage{palatino} 	%Palatino
+% \usepackage{times} 	%Times
+% \renewcommand{\rmdefault}{trebuchet} 	%Trebuchet (caso esteja instalado)
+
+% O comando seguinte insere o nome da tese no cabeçalho das páginas (comentar se não for pretendido)
+% (Pode ser o título abreviado)
+\cabecalho{\thesistitlestr}
+
+\begin{document}
+
+% Se desejar colocar o conteúdo de uma secção em um ficheiro tex separado,
+% tal ficheiro pode ser incluído usando o comando \input{Nome do ficheiro criado}.
+% Exemplo: \thesisdedication{\input{nome-do-ficheiro-contendo-a-dedicatoria}}
+% Isto resulta para todas as seções abaixo.
+\thesisdedication{
+	Inserir dedicatória. (Opcional: se não desejar incluir, todo o comando deve ser apagado)\\
+}
+
+\thesisthanks{
+	Agradecer a quem de direito. (Opcional: se não desejar incluir, todo o comando deve ser apagado)
+}
+
+\thesisforewords{
+	Prefácio. (Opcional: se não desejar incluir, todo o comando deve ser apagado)
+}
+
+\thesisresumo{
+	Resumo do trabalho em português, seguida das palavras-chave.
+}{Suas, palavras, chaves, separadas, por, vírgula} 	
+
+
+\thesisresumoalargado{
+	Resumo alargado deve ser escrito em português e é usado unicamente para 
+	teses escritas em língua estrangeira.
+	Se não for este o caso, todo o comando deve ser apagado.
+} 	
+
+\thesisabstract{
+	Abstract in English, followed by keywords.
+}{Your, key, words, separated, by, comma}	
+
+\tableofcontents   % Índice
+\listoffigures     % Lista de Figuras    (Opcional)
+\listoftables      % Lista de Tabelas    (Opcional)
+\listofalgorithms  % Lista de Algoritmos (Opcional)
+\thesisacronyms{\input{Acronimos}}  % Lista de Acrónimos  (Opcional)
+
+\mainmatter
+
+% Os capítulos são inseridos a partir daqui 
+\include{Intro}
+\include{Exemplos}
+% Fim da inserção dos capítulos
+
+% Bibliografia
+% Primeiro parâmetro é o estilo e o segundo o arquivo bib
+\thesisbibliography{template/estilo-biblio}{bibliografia}
+
+% Exemplo de uso de outro estilo bibliográfico. Define ser definido apenas um estilo 
+%\thesisbibliography{template/IEEEtran}{references}
+
+\appendix{\input{Anexos}} % Anexos (Opcional)
+\thesisglossary{\input{Glossario}}  % Glossário (Opcional)
+
+\printindex % Inserir índice remissivo (Opcional)
+
+\end{document}

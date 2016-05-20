@@ -2,9 +2,7 @@
 %% Este é o ficheiro formatacaoUBI.tex - NÃO EDITAR excepto a secção hypersetup!
 %% Define a formatação a ser usada em teses apresentadadas na Universidade da Beira Interior
 % Versão 2.2 - 15/10/2014 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
-% 	- Padronização do nome dos arquivos para inglês (auxiliando alunos que não falam a língua portuguesa).
-% 	- Alteração de nomes de arquivos para torná-los mais claros, como UbiStyle, UbiFormatting e UbiBibliography.
-% 	- Separação de comandos de dentro do arquivo de formatação para dentro da página de rosto (CoverPage.tex)
+% 	- Separação de comandos de dentro do arquivo de formatação para dentro da página de rosto (PaginaRosto.tex)
 % 	  para evitar alterações diretamente no arquivo de formatação.							
 % 	- Criação dos comandos \thesisauthors \thesistitle \thesissubtitle \thesistype 
 % 	  \thesislocalanddate, \thesissupervisors, \thesisthanks,
@@ -17,11 +15,11 @@
 %     Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
 %     do usuário, reduzindo a probabilidade do usuário alterar o template indevidamente (mesmo que sem querer).
 %     Com estes novos comandos, no arquivo principal (por padrão ThesisProject.tex)
-%     pode-se definir tais variáveis, não precisando mais alterar nada na folha de rosto (CoverPage.tex).
+%     pode-se definir tais variáveis, não precisando mais alterar nada na folha de rosto (PaginaRosto.tex).
 %   - Inclusão de metadados no arquivo PDF gerado (autor, assunto, etc)
-%   - Renomeado ficheiro FormattingUBI.tex para FormattingUBI.sty, definindo ele como um pacote
-%     e assim usando o mesmo no tex principal com \usepackage{./template/FormattingUBI}
-%   - Incluído o hook \AtBeginDocument para adicionar automaticamente a CoverPage.tex
+%   - Renomeado ficheiro formatacaoUBI.tex para formatacaoUBI.sty, definindo ele como um pacote
+%     e assim usando o mesmo no tex principal com \usepackage{template/formatacaoUBI}
+%   - Incluído o hook \AtBeginDocument para adicionar automaticamente a PaginaRosto.tex
 %     no início do documento. Assim dentro do \begin{document} do tex principal haverá
 %     apenas conteúdo do documento do utilizador.
 %% Versão 2.1 - 28/03/2014 - Agora compila com o XeLaTeX por causa do tipo de fonte, 
@@ -65,10 +63,10 @@
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{./template/FormattingUBI}[2014/10/15]
+\ProvidesPackage{template/formatacaoUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
-\usepackage{mathspec}
+\usepackage{mathspec, nomencl}
 \usepackage{fontspec}
 \usepackage{amsmath,amscd,amsthm,xspace}	%Pacotes matemáticos 
 \usepackage{amssymb}						%Fontes extra para matemáticos   http://www.ctan.org/tex-archive/fonts/amsfonts
@@ -123,7 +121,7 @@
 %%Agradecimentos 
 \newcommand{\thesisthanks}[1]{
 	\newpage 	
-	\section*{\titulos{Acknowledgements}}
+	\section*{\titulos{Agradecimentos}}
 	\vspace{0.5cm}
 	#1
 	\cleardoublepage
@@ -223,6 +221,17 @@
 	\section*{\titulos{Glossário}}
 	\vspace{0.5cm}
 		\noindent
+		#1
+	\cleardoublepage
+}
+
+\newcommand{\thesisacronyms}[1]{
+	\phantomsection \label{listofabbreviations}
+	\addcontentsline{toc}{chapter\label{listofabbreviations}}{List of Abbreviations}
+	\newpage
+	
+	\section*{\titulos{Lista de Acrónimos}}
+		\vspace{0.5cm}
 		#1
 	\cleardoublepage
 }
@@ -329,6 +338,22 @@
 \usepackage{algorithm}
 \usepackage[noend]{algorithmic}
 
+%https://en.wikibooks.org/wiki/TeX/let
+\let\originalListofalgorithms\listofalgorithms
+\renewcommand{\listofalgorithms}{
+	\phantomsection \label{listofalgorithms}
+	\addcontentsline{toc}{chapter\label{listofalgorithms}}{List of Algorithms}
+
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \originalListofalgorithms
+    \if@restonecol\twocolumn\fi
+    
+    \cleardoublepage
+}
 
 %%Páginas em branco geradas antes de capítulos têm de vir numeradas
 \makeatletter
@@ -410,6 +435,6 @@
 
 \AtBeginDocument{%
 %\AfterEndPreamble{
-	\include{./template/CoverPage}
+	\include{template/PaginaRosto}
 }
 
