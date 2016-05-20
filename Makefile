@@ -8,4 +8,4 @@ all:
 	xelatex -file-line-error -synctex=1 -interaction=nonstopmode "$(FILE).tex" > /dev/null 2>&1 || true
 	
 clean:
-	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -rf *.$(ext);)
+	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -f *.$(ext); rm -f template/*.$(ext);)
