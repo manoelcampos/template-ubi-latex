@@ -1,89 +1,123 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Este é o ficheiro formatacaoUBI.tex - NÃO EDITAR excepto a secção hypersetup!
 %% Define a formatação a ser usada em teses apresentadadas na Universidade da Beira Interior
-% Versão 2.2 - 15/10/2014 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
-% 	- Separação de comandos de dentro do arquivo de formatação para dentro da página de rosto (PaginaRosto.tex)
-% 	  para evitar alterações diretamente no arquivo de formatação.							
-% 	- Criação dos comandos \thesisauthors \thesistitle \thesissubtitle \thesistype 
-% 	  \thesislocalanddate, \thesissupervisors, \thesisthanks,
-%  	  \thesisdedication, \thesisforewords, \thesisabstract, \thesisresumo, \thesisresumoalargado,
-%     \thesisglossary e \thesisbibliography para definir, no documento tex principal
-% 	  da tese: o nome do autor, o título da tese, o substítulo, o tipo de tese 
-%	  (se é proposta de tese, tese, dissertação), o local e data de publicação,
-%     os orientadores, os agradecimentos, dedicatória, prefácio, abstract, resumo, 
-%     resumo alargado, glossário e o estilo+bibliografia. 
+%
+%% Versão 2.5 - 21/05/2016 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
+%   - Separação total dos comandos e formatações do template de dentro dos ficheiros tex
+%     que compõem a tese do utilizador. Desta forma, como pode ser visto no Tese.tex,
+%     os documentos da tese ficam extremamente simples, organizados e 
+%     muito mais fácil dos utilizadores, mesmo iniciantes em LaTeX, perceberam seu conteúdo.
+%     Tal separação permite que os utilizadores possam atualizar suas teses para novas
+%     versões do template imediatamente e sem traumas. Isto também elimina riscos de introduzirem
+%     erros que façam com que a tese deixe de compilar ou mesmo que 
+%     percam conteúdo movendo conteúdo para uma nova versão do template.
+% 	- Separação de comandos no ficheiro formatacaoUBI para dentro do PaginaRosto
+% 	  para evitar alterações diretamente no ficheiro de formatação.							
+%   - Remoção da necessidade de importar o ficheiro formatacaoUBI no documento principal.
+%     Tal ficheiro agora é importado diretamente pelo template
+%     (dentro do estiloUBI.cls). Desta forma, o utilizador
+%     só precisa usar a classe estiloUBI na primeira linha do seu documento principal (normalmente Tese.tex),
+%     como indicado no seguinte exemplo: \documentclass[10pt,twoside]{template/estiloUBI}
+% 	- Criação dos seguintes comandos para definir informações da tese:
+%	  	\thesisauthors       : nome do autor
+%	  	\thesistitle         : título da tese
+%	  	\thesissubtitle      : sub-título da tese (opcional)
+%	  	\thesistype          : tipo da tese (proposta de tese, dissertação de mestrado ou tese de doutoramento)
+% 	  	\thesislocalanddate  : sítio e data de publicação da tese
+%	  	\thesissupervisors   : orientador e co-orientadores
+%     	\thesisthanks        : agradecimentos (opcional)
+%  	  	\thesisdedication    : dedicatória (opcional)
+%     	\thesisforewords     : prefácio (opcional)
+%     	\thesisabstract      : abstract (inglês)
+%     	\thesisresumo        : resumo (português)
+%     	\thesisresumoalargado: resumo alargado em português (apenas para teses escritas em inglês)
+%     	\thesisacronyms      : lista de acrônimos (opcional)
+%     	\thesisglossary      : glossário (opcional)
+%	  	\facultyname         : nome da faculdade
+%     	\studiescyclenumber  : número do ciclo de estudos (1º, 2º ou 3º).
+%     	\thesisbibliography  : estilo bibliográfico e arquivo de bibliografia. 
+%			Exemplo - \thesisbibliography{template/estilo-biblio}{bibliografia}
+%                     define o estilo bibliográfico template/estilo-biblio.bst
+%                     para o arquivo bibliografia.bib
 %     Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
-%     do usuário, reduzindo a probabilidade do usuário alterar o template indevidamente (mesmo que sem querer).
-%     Com estes novos comandos, no arquivo principal (por padrão ThesisProject.tex)
+%     do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
+%     Com estes novos comandos, no ficheiro principal (por padrão Tese.tex)
 %     pode-se definir tais variáveis, não precisando mais alterar nada na folha de rosto (PaginaRosto.tex).
 %   - Inclusão de metadados no arquivo PDF gerado (autor, assunto, etc)
-%   - Renomeado ficheiro formatacaoUBI.tex para formatacaoUBI.sty, definindo ele como um pacote
-%     e assim usando o mesmo no tex principal com \usepackage{template/formatacaoUBI}
 %   - Incluído o hook \AtBeginDocument para adicionar automaticamente a PaginaRosto.tex
 %     no início do documento. Assim dentro do \begin{document} do tex principal haverá
 %     apenas conteúdo do documento do utilizador.
-%% Versão 2.1 - 28/03/2014 - Agora compila com o XeLaTeX por causa do tipo de fonte, 
-%                            incluido o estilo de biblipgrafia IEEE,
-%%                           possibilidade de escolha de tipo de fonte matemático
+%   - Definição de títulos em inglês e português para todos os elementos da tese
+%     (como agradecimentos, dedicatória, lista de acrônimos, lista de algoritmos, etc).
+%     Na versão anterior, apenas elementos padrões do latex (como capítulos, secções e listas de figuras)
+%     eram traduzidos de acordo com o idioma escolhido pelo utilizador.
+%
+%% Versão 2.1 - 28/03/2014 
+%   - Agora compila com o XeLaTeX por causa do tipo de fonte, incluido o estilo de biblipgrafia IEEE,
+%     possibilidade de escolha de tipo de fonte matemático
+%
 %% Versão 2.0 - 10/11/2011 - Bibliografia agora aparece no índice
 %% Versão 1.9 - 10/10/2011 - Resolvido problema em que o texto nas tabelas aparecia em cima da linha superior
 %% Versão 1.8 - 12/07/2011 - Legendas são agora centradas
-%% Versão 1.7 - 8/07/2011 - Correcção de algumas medidas de acordo com novo modelo de Word
-%% Versão 1.6 - 1/07/2011 - Trebuchet inserido como fonte principal
-%% Adaptado do original de Oliver Commowick para estar de acordo com as regras do Despacho nº 49/R/2010
-%% Adaptação por João Ferro, Norberto Barroca, Rui Paulo - Instituto de Telecomunicações - DEM/UBI, Paulo Machado Departamento %% de Ciências Aeroespaciais/UBI.
+%% Versão 1.7 - 08/07/2011 - Correcção de algumas medidas de acordo com novo modelo de Word
+%
+%% Versão 1.6 - 01/07/2011 - Trebuchet inserido como fonte principal
+%   - Adaptado do original de Oliver Commowick para estar de acordo com as regras do Despacho nº 49/R/2010
+%   - Adaptação por João Ferro, Norberto Barroca, Rui Paulo - Instituto de Telecomunicações - DEM/UBI, 
+%     Paulo Machado Departamento %% de Ciências Aeroespaciais/UBI.
+%
 %% Contacto: latex@e-projects.ubi.pt
 %% Agradecimento especial a Stefan_K da latex-community.org pela ajuda com os códigos de tabela e equação.
 %% A versão actual pode ser alterada sem aviso prévio.
 %% Download da última versão em: http://www.e-projects.ubi.pt/latex/template.html
+%%
 %% Uso e distribuição de acordo com a licenca GNU GPL.
 %% 
-%%    Este programa é um software livre: você pode redistribui-lo e/ou 
-%%
+%%      Este programa é um software livre: você pode redistribui-lo e/ou 
 %%		modificá-lo dentro dos termos da Licença Pública Geral GNU como 
-%%
-%%		publicada pela Free Software Foundation, na versão 3 da 
-%%
-%%		Licença, ou (na sua opinião) qualquer versão.
-%%
-%%
+%%		publicada pela Free Software Foundation, na versão 3 da Licença,
+%%		ou (na sua opinião) qualquer versão.
 %%
 %%		Este programa é distribuido na esperança que possa ser útil, 
-%%
 %%		mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a qualquer
-%%
-%%		MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
-%%
-%%		Licença Pública Geral GNU para maiores detalhes.
-%%
-%%
+%%		MERCADO ou APLICAÇÃO EM PARTICULAR. 
+%%		Veja a Licença Pública Geral GNU para maiores detalhes.
 %%
 %%		Você deve ter recebido uma cópia da Licença Pública Geral GNU
-%%
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesPackage{template/formatacaoUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
-\usepackage{mathspec, nomencl}
-\usepackage{fontspec}
+\usepackage{array,verbatim,mathspec,fontspec}
 \usepackage{amsmath,amscd,amsthm,xspace}	%Pacotes matemáticos 
-\usepackage{amssymb}						%Fontes extra para matemáticos   http://www.ctan.org/tex-archive/fonts/amsfonts
-%\usepackage[math]{kurier} %descomentar para colocar tipo de letra aproximado ao Trebuchet nos ambientes matemáticos
+\usepackage{amssymb}%Fontes extra para matemáticos - http://www.ctan.org/tex-archive/fonts/amsfonts
 
-%\usepackage[latin1]{inputenc}		%este faz falta na versão normal, mas em XeLaTeX tem que ser comentado		%Permitir caracteres acentuados  http://www.ctan.org/pkg/inputenc
-%\usepackage[T1]{fontenc}					%este faz falta na versão normal, mas em XeLaTeX tem que ser comentado		%Permitir caracteresespeciais  http://www.ctan.org/pkg/fontenc
+%%Para algoritmos  http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+
+% Descomentar para colocar tipo de letra aproximado ao Trebuchet nos ambientes matemáticos
+%\usepackage[math]{kurier} 
+
+% Permitir caracteresespeciais  http://www.ctan.org/pkg/fontenc, http://www.ctan.org/pkg/inputenc
+% Estes fazem falta na versão normal, mas em XeLaTeX tem que ser comentado	
+%\usepackage[latin1]{inputenc}	
+%\usepackage[T1]{fontenc}	
 
 \usepackage[a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}	%Papel A4, com margens
 %\renewcommand{\baselinestretch}{1.05}
 
-\usepackage{aecompl}								%Permitir fontes vituais para codificação T1  http://www.ctan.org/tex-archive/fonts/ae
-\usepackage[center,nooneline,font={footnotesize}]{caption}			%Legenda: centrada, tamanho de nota rodapé  http://www.ctan.org/pkg/caption
-\setlength{\parindent}{0pt}							%Sem tabulação em cada novo parágrafo
-\usepackage{parskip}								%Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
-\setlength{\parskip}{0.53cm}
+% Permitir fontes vituais para codificação T1 - http://www.ctan.org/tex-archive/fonts/ae
+\usepackage{aecompl} 
 
+% Legenda: centrada, tamanho de nota rodapé  http://www.ctan.org/pkg/caption
+\usepackage[center,nooneline,font={footnotesize}]{caption}
+
+\setlength{\parindent}{0pt} %Sem tabulação em cada novo parágrafo
+\usepackage{parskip} %Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
+\setlength{\parskip}{0.53cm}
 
 %% O código seguinte permite gerar um mini indice de capitulo (não referido no despacho reitoral)
 % \usepackage[nottoc, notlof, notlot]{tocbibind}
@@ -98,144 +132,232 @@
 %\ifpdf
 %  \usepackage[pdftex]{graphicx}							%Inserir gráficos  http://ctan.org/pkg/graphicx
 \usepackage{graphicx}
-  \DeclareGraphicsExtensions{.jpg,.png,.pdf} 					%Pdf directo apenas compativel com jpg, png...
-  \usepackage[pagebackref,hyperindex=true]{hyperref}				%O pacote hyperref é usada para lidar com comandos referência cruzada  http://ctan.org/pkg/hyperref
+  \DeclareGraphicsExtensions{.jpg,.png,.pdf} 	%Pdf directo apenas compativel com jpg, png...
+  % O pacote hyperref é usada para lidar com comandos referência cruzada  http://ctan.org/pkg/hyperref
+  \usepackage[pagebackref,hyperindex=true]{hyperref}				
 %\else
 %  \usepackage{graphicx}
-%  \DeclareGraphicsExtensions{.ps,.eps}						%DVI directo apenas compativel com ps, eps...
+%  \DeclareGraphicsExtensions{.ps,.eps}	 %DVI directo apenas compativel com ps, eps...
 %  \usepackage[dvipdfm,pagebackref,hyperindex=true]{hyperref}
 %\fi
 
+%Directorios onde por defeito serão buscadas as imagens a serem utilizadas na tese
+\graphicspath{{.}{images/}{imagens/}}	
 
-\graphicspath{{.}{images/}{imagens/}}							%Directorio das imagens
 
-%New commands created by Manoel Campos da Silva Filho - http://manoelcampos.com
-\newcommand{\thesisauthors}[1]{\def\thesisauthorsstr{#1}}
-\newcommand{\thesistitle}[1]{\def\thesistitlestr{#1}}
-\newcommand{\thesissubtitle}[1]{\def\thesissubtitlestr{#1}}
-\newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
-\newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
-\newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
-\newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
+%%Passar para português
+%Descomentar para escrever com regras em Português sem ser em XeLaTeX  http://www.ctan.org/pkg/babel
+%\newcommand{\portugues}{\usepackage[portuguese]{babel}		  								
 
-%%Agradecimentos 
-\newcommand{\thesisthanks}[1]{
-	\newpage 	
-	\section*{\titulos{Agradecimentos}}
-	\vspace{0.5cm}
-	#1
-	\cleardoublepage
-}
+\usepackage{polyglossia} 
+\setmainlanguage{english} 
 
-\newcommand{\thesisdedication}[1]{
-	%%Dedicatória
-	\newpage 
-	\section*{\titulos{Dedicatória}}
-	\vspace{0.5cm}
-	#1
-	\cleardoublepage
-	%\newpage 	
-	%\mbox{}
-	%\vfil
-	%\begin{center}
-	%Dedicated to...
-	%\end{center}
-	%\vfil
-	%\eject
-	%\cleardoublepage
-}
+% Texto para títulos de elementos como capítulos, seções    
+\newcommand{\facultyname}[1]{\def\facultynamestr{#1}}
+% Número do ciclo de estudos
+\newcommand{\studiescyclenumber}[1]{\def\studiescyclenumberstr{#1}}
+% Texto que sucede o número do ciclo de estudos
+\newcommand{\studiescycle}{cycle studies}
+\newcommand{\candidate}{Candidate}
+\newcommand{\thanksname}{Thanks}
+\newcommand\dedicationname{Dedication}
+\newcommand\prefacename{Preface}
+\newcommand\listacronymname{List of Acronyms}
+\newcommand\listalgorithmname{List of Algorithms}
 
-\newcommand{\thesisforewords}[1]{
-	%%Prefácio 
-	\newpage 	
-	\section*{\titulos{Prefácio}}
-	\vspace{0.5cm}
-	#1
-	\cleardoublepage
-}
+\newcommand\contentsname{Contents}
+\newcommand\listfigurename{List of Figures}
+\newcommand\listtablename{List of Tables}
+\newcommand\bibname{References}
+\newcommand\indexname{Index}
+\newcommand\figurename{Figure}
+\newcommand\tablename{Table}
+\newcommand\partname{Part}
+\newcommand\chaptername{Chapter}
+\newcommand\glossaryname{Glossary}
+\newcommand\appendixname{Appendix}
+\def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space\number\day, \number\year}
 
-%Primeiro parametro eh o resumo e o segundo as palavras chaves
-\newcommand{\thesisresumo}[2]{
-	\newpage 	
-	\phantomsection \label{resumo}
-	\addcontentsline{toc}{chapter\label{resumo}}{Resumo}
-	\section*{\titulos{Resumo}}
-	\vspace{0.5cm}
-	#1
-	\vspace{2.2cm}
+% Users of XeTeX are ad­vised to use poly­glos­sia rather than Ba­bel.
+% Comentar para escrever sem ser em modo XeLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
+\newcommand{\portugues}{
+	\setmainlanguage{portuges} 	
+	\addto\captionsportuguese{\renewcommand{\contentsname}{Índice}}
+	\addto\captionsportuguese{\renewcommand{\prefacename}{Prefácio}}
+	\addto\captionsportuguese{\renewcommand{\indexname}{Índice Remissivo}}
+	\addto\captionsportuguese{\renewcommand{\listfigurename}{Lista de Figuras}}	
+	\addto\captionsportuguese{\renewcommand{\listtablename}{Lista de Tabelas}}	
+	\addto\captionsportuguese{\renewcommand{\bibname}{Bibliografia}}	
+	\addto\captionsportuguese{\renewcommand{\figurename}{Figura}}	
+	\addto\captionsportuguese{\renewcommand{\tablename}{Tabela}}	
+	\addto\captionsportuguese{\renewcommand{\partname}{Parte}}	
+	\addto\captionsportuguese{\renewcommand{\glossaryname}{Glossário}}	
+	\addto\captionsportuguese{\renewcommand{\appendixname}{Apêndice}}		
 	
-	{\titulos{Palavras-chave}}
-	
-	\vspace{0.8cm}
-	#2
-	\cleardoublepage	
+	% Os comandos que não são padrões do latex (foram criados aqui no template)
+	% não podem ser associados a um idioma do pacote polyglossia.
+	% Assim, deve-se apenas renovar o comando para que funcione.
+	\renewcommand{\candidate}{Candidato}
+	\renewcommand{\studiescycle}{ciclo de estudos}
+	\renewcommand{\thanksname}{Agradecimentos}
+	\renewcommand{\dedicationname}{Dedicatória}
+	\renewcommand{\listalgorithmname}{Lista de Algorithmos}
+	\renewcommand{\listacronymname}{Lista de Acrônimos}	
 }
 
-\newcommand{\thesisresumoalargado}[1]{
-	%%Resumo alargado 
-	\newpage 	
-	\phantomsection \label{resumo_alargado}
-	\addcontentsline{toc}{chapter\label{resumo_alargado}}{Resumo alargado}	
-	\section*{\titulos{Resumo alargado}}
-	\vspace{0.5cm}
-	#1
-	\cleardoublepage
-}
-
-%Primeiro parametro eh o abstract e o segundo as keywords
-\newcommand{\thesisabstract}[2]{
-	%abstract+keywords
-	\newpage 	
-	\phantomsection \label{abstract}
-	\addcontentsline{toc}{chapter\label{abstract}}{Abstract}	
-	\section*{\titulos{Abstract}}
-	\vspace{0.5cm}
-	#1
+% New commands created by Manoel Campos da Silva Filho - http://manoelcampos.com
+	\newcommand{\thesisauthors}[1]{\def\thesisauthorsstr{#1}}
+	\newcommand{\thesistitle}[1]{\def\thesistitlestr{#1}}
+	\newcommand{\thesissubtitle}[1]{\def\thesissubtitlestr{#1}}
+	\newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
+	\newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
+	\newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
+	\newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
 	
-	\vspace{2.2cm}
-	{\titulos{Keywords}}
-	
-	\vspace{0.8cm}
-	#2
-	\cleardoublepage
-}
-
-
-%O primeiro parâmetro é o estilo e o segundo é o arquivo bib
-\newcommand{\thesisbibliography}[2]{
-	%Bibliografia (bibliography)
-	\cleardoublepage
-	\phantomsection
-	%\addcontentsline{toc}{chapter}{Bibliografia}
-	\renewcommand{\bibname}{References}
-	\addcontentsline{toc}{chapter}{\bibname}
-	
-	\bibliographystyle{#1}
-	\bibliography{#2}
-}
-
-\newcommand{\thesisglossary}[1]{
-	\newpage
-	\phantomsection \label{glossary}
-	\addcontentsline{toc}{chapter\label{glossary}}{Glossário}	
-	\section*{\titulos{Glossário}}
-	\vspace{0.5cm}
-		\noindent
-		#1
-	\cleardoublepage
-}
-
-\newcommand{\thesisacronyms}[1]{
-	\phantomsection \label{listofabbreviations}
-	\addcontentsline{toc}{chapter\label{listofabbreviations}}{List of Abbreviations}
-	\newpage
-	
-	\section*{\titulos{Lista de Acrónimos}}
+	%%Agradecimentos 
+	\newcommand{\thesisthanks}[1]{
+		\newpage 	
+		\phantomsection \label{thanks}
+		\addcontentsline{toc}{chapter\label{thanks}}{\thanksname}		
+		\section*{\titulos\thanksname}
 		\vspace{0.5cm}
 		#1
-	\cleardoublepage
-}
-%-------------------------------------------------------------------------------
+		\cleardoublepage
+	}
+	
+	%Dedicatória
+	\newcommand{\thesisdedication}[1]{
+		\newpage 
+		\phantomsection \label{dedication}
+		\addcontentsline{toc}{chapter\label{dedication}}{\dedicationname}		
+		\section*{\titulos\dedicationname}
+		\vspace{0.5cm}
+		#1
+		\cleardoublepage
+		%\newpage 	
+		%\mbox{}
+		%\vfil
+		%\begin{center}
+		%Dedicated to...
+		%\end{center}
+		%\vfil
+		%\eject
+		%\cleardoublepage
+	}
+	
+	%Prefácio 
+	\newcommand{\thesisforewords}[1]{
+		\newpage 	
+		\phantomsection \label{preface}
+		\addcontentsline{toc}{chapter\label{preface}}{\prefacename}		
+		\section*{\titulos\prefacename}
+		\vspace{0.5cm}
+		#1
+		\cleardoublepage
+	}
+	
+	%Primeiro parametro é o resumo e o segundo as palavras chaves (em português)
+	\newcommand{\thesisresumo}[2]{
+		\newpage 	
+		\phantomsection \label{resumo}
+		\addcontentsline{toc}{chapter\label{resumo}}{Resumo}
+		\section*{\titulos{Resumo}}
+		\vspace{0.5cm}
+		#1
+		\vspace{2.2cm}
+		
+		{\titulos{Palavras-chave}}
+		
+		\vspace{0.8cm}
+		#2
+		\cleardoublepage	
+	}
+	
+	% Resumo alargado em português (somente para teses escritas em inglês)
+	\newcommand{\thesisresumoalargado}[1]{
+		\newpage 	
+		\phantomsection \label{resumo-alargado}
+		\addcontentsline{toc}{chapter\label{resumo-alargado}}{Resumo alargado}	
+		\section*{\titulos{Resumo alargado}}
+		\vspace{0.5cm}
+		#1
+		\cleardoublepage
+	}
+	
+	%Primeiro parametro é o abstract e o segundo as keywords (em inglês)
+	\newcommand{\thesisabstract}[2]{
+		%abstract+keywords
+		\newpage 	
+		\phantomsection \label{abstract}
+		\addcontentsline{toc}{chapter\label{abstract}}{Abstract}	
+		\section*{\titulos{Abstract}}
+		\vspace{0.5cm}
+		#1
+		
+		\vspace{2.2cm}
+		{\titulos{Keywords}}
+		
+		\vspace{0.8cm}
+		#2
+		\cleardoublepage
+	}
+	
+	
+	%Bibliografia: O primeiro parâmetro é o estilo e o segundo é o ficheiro bib
+	\newcommand{\thesisbibliography}[2]{
+		\cleardoublepage
+		\phantomsection \label{bibliography}
+		\addcontentsline{toc}{chapter\label{bibliography}}{\bibname}
+		
+		\bibliographystyle{#1}
+		\bibliography{#2}
+	}
+	
+
+	%https://en.wikibooks.org/wiki/TeX/let
+	\let\originalListofalgorithms\listofalgorithms
+	\renewcommand{\listofalgorithms}{
+		\newpage
+		\phantomsection \label{listofalgorithms}
+		\addcontentsline{toc}{chapter\label{listofalgorithms}}{\listalgorithmname}
+	
+	    \if@twocolumn
+	      \@restonecoltrue\onecolumn
+	    \else
+	      \@restonecolfalse
+	    \fi
+	    \originalListofalgorithms
+	    \if@restonecol\twocolumn\fi
+	    
+	    \cleardoublepage
+	}	
+	
+	\newcommand{\thesisacronyms}[1]{
+		\newpage
+		\phantomsection \label{listacronymname}
+		\addcontentsline{toc}{chapter\label{listacronymname}}{\listacronymname}
+		\newpage
+		
+		\section*{\titulos\listacronymname}
+			\vspace{0.5cm}
+			#1
+		\cleardoublepage
+	}
+	
+	\newcommand{\thesisglossary}[1]{
+		\newpage
+		\phantomsection \label{glossary}
+		\addcontentsline{toc}{chapter\label{glossary}}{\glossaryname}	
+		\section*{\titulos\glossaryname}
+		\vspace{0.5cm}
+			\noindent
+			#1
+		\cleardoublepage
+	}
+%End of new commands by Manoel Campos da Silva Filho ---------------------------------------------
 
 %%Links do pdf
 \usepackage{color}								%Pacote de gestão de cor
@@ -276,10 +398,8 @@
 \def\diag{\operatorname{Diag}}
 \newcommand{\eqRef}[1]{(\ref{#1})}
 
-
 %%Para rotação de figuras e tabelas http://www.ctan.org/tex-archive/macros/latex/contrib/rotating
-\usepackage{rotating}
-  
+\usepackage{rotating}  
 	
 %%Cabeçalho e rodapé http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr
 \usepackage{fancyhdr}                   						%Fancy Header and Footer
@@ -311,17 +431,6 @@
 \newcommand{\rostofac}{\fontsize{12.5pt}{12.5pt}\selectfont}				%Faculdade: 12.5pt
 
 
-%%Passar para português
-%\newcommand{\portugues}{\usepackage[portuguese]{babel}		%Descomentar para escrever com regras em Português sem ser em XeLaTeX  http://www.ctan.org/pkg/babel  								% Users of X∃TeX are ad­vised to use poly­glos­sia rather than Ba­bel.
-
-\newcommand{\portugues}{\usepackage{polyglossia} %Comentar para escrever sem ser em modo XeLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
-%\setmainlanguage{portuges}                       %Comentar para escrever sem ser em modo XeLaTeX
-\setmainlanguage{english} 
-\setotherlanguage{portuges}
-
-\addto\captionsportuguese{\renewcommand{\contentsname}{Índice}}
-\addto\captionsportuguese{\renewcommand{\indexname}{Índice Remissivo}}}
-
 %linhas das tabelas e afins
 \usepackage{colortbl}									%Adicionar cor às tabelas  http://www.ctan.org/tex-archive/macros/latex/contrib/colortbl/
 \arrayrulecolor{black}									%Preto
@@ -333,27 +442,6 @@
   \renewcommand{\headrulewidth}{0pt}
 }
 
-
-%%Para algoritmos  http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
-\usepackage{algorithm}
-\usepackage[noend]{algorithmic}
-
-%https://en.wikibooks.org/wiki/TeX/let
-\let\originalListofalgorithms\listofalgorithms
-\renewcommand{\listofalgorithms}{
-	\phantomsection \label{listofalgorithms}
-	\addcontentsline{toc}{chapter\label{listofalgorithms}}{List of Algorithms}
-
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \originalListofalgorithms
-    \if@restonecol\twocolumn\fi
-    
-    \cleardoublepage
-}
 
 %%Páginas em branco geradas antes de capítulos têm de vir numeradas
 \makeatletter

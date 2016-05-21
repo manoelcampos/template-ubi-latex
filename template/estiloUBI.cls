@@ -67,6 +67,7 @@
 \@titlepagetrue
 \newif\if@openright
 \newif\if@mainmatter \@mainmattertrue
+
 \if@compatibility\else
 \DeclareOption{a4paper}
    {\setlength\paperheight {297mm}%
@@ -91,34 +92,44 @@
     \setlength\paperheight {\paperwidth}%
     \setlength\paperwidth  {\@tempdima}}
 \fi
+
 \if@compatibility
   \renewcommand\@ptsize{0}
 \else
 \DeclareOption{10pt}{\renewcommand\@ptsize{0}}
 \fi
+
 \DeclareOption{11pt}{\renewcommand\@ptsize{1}}
 \DeclareOption{12pt}{\renewcommand\@ptsize{2}}
+
 \if@compatibility\else
 \DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
 \fi
+
 \DeclareOption{twoside}{\@twosidetrue  \@mparswitchtrue}
 \DeclareOption{draft}{\setlength\overfullrule{5pt}}
+
 \if@compatibility\else
 \DeclareOption{final}{\setlength\overfullrule{0pt}}
 \fi
+
 \DeclareOption{titlepage}{\@titlepagetrue}
+
 \if@compatibility\else
 \DeclareOption{notitlepage}{\@titlepagefalse}
 \fi
+
 \if@compatibility
 \@openrighttrue
 \else
 \DeclareOption{openright}{\@openrighttrue}
 \DeclareOption{openany}{\@openrightfalse}
 \fi
+
 \if@compatibility\else
 \DeclareOption{onecolumn}{\@twocolumnfalse}
 \fi
+
 \DeclareOption{twocolumn}{\@twocolumntrue}
 \DeclareOption{leqno}{\input{leqno.clo}}
 \DeclareOption{fleqn}{\input{fleqn.clo}}
@@ -132,6 +143,7 @@
       }%
    \renewcommand\newblock{\par}}%
 }
+
 \ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
 \ProcessOptions
 \input{bk1\@ptsize.clo}
@@ -152,6 +164,7 @@
 \setcounter{dbltopnumber}{2}
 \renewcommand\dbltopfraction{.7}
 \renewcommand\dblfloatpagefraction{.5}
+
 \if@twoside
   \def\ps@headings{%
       \let\@oddfoot\@empty\let\@evenfoot\@empty
@@ -186,6 +199,7 @@
         \fi
         ##1}}}}
 \fi
+
 \def\ps@myheadings{%
     \let\@oddfoot\@empty\let\@evenfoot\@empty
     \def\@evenhead{\thepage\hfil\slshape\leftmark}%
@@ -261,6 +275,7 @@
   \global\let\date\relax
   \global\let\and\relax
 }
+
 \def\@maketitle{%
   \newpage
   \null
@@ -280,31 +295,36 @@
   \par
   \vskip 1.5em}
 \fi
+
 \newcommand*\chaptermark[1]{}
 \setcounter{secnumdepth}{2}
-\newcounter {part}
-\newcounter {chapter}
-\newcounter {section}[chapter]
-\newcounter {subsection}[section]
-\newcounter {subsubsection}[subsection]
-\newcounter {paragraph}[subsubsection]
-\newcounter {subparagraph}[paragraph]
-\renewcommand \thepart {\@Roman\c@part}
-\renewcommand \thechapter {\@arabic\c@chapter}
-\renewcommand \thesection {\thechapter.\@arabic\c@section}
+\newcounter{part}
+\newcounter{chapter}
+\newcounter{section}[chapter]
+\newcounter{subsection}[section]
+\newcounter{subsubsection}[subsection]
+\newcounter{paragraph}[subsubsection]
+\newcounter{subparagraph}[paragraph]
+
+\renewcommand\thepart {\@Roman\c@part}
+\renewcommand\thechapter {\@arabic\c@chapter}
+\renewcommand\thesection {\thechapter.\@arabic\c@section}
 \renewcommand\thesubsection   {\thesection.\@arabic\c@subsection}
 \renewcommand\thesubsubsection{\thesubsection .\@arabic\c@subsubsection}
 \renewcommand\theparagraph    {\thesubsubsection.\@arabic\c@paragraph}
 \renewcommand\thesubparagraph {\theparagraph.\@arabic\c@subparagraph}
 \newcommand\@chapapp{\chaptername}
+
 \newcommand\frontmatter{%
     \cleardoublepage
   \@mainmatterfalse
   \pagenumbering{roman}}
+  
 \newcommand\mainmatter{%
     \cleardoublepage
   \@mainmattertrue
   \pagenumbering{arabic}}
+  
 \newcommand\backmatter{%
   \if@openright
     \cleardoublepage
@@ -312,6 +332,7 @@
     \clearpage
   \fi
   \@mainmatterfalse}
+  
 \newcommand\part{%
   \if@openright
     \cleardoublepage
@@ -346,12 +367,14 @@
      \fi
      \Huge \bfseries #2\par}%
     \@endpart}
+    
 \def\@spart#1{%
     {\centering
      \interlinepenalty \@M
      \normalfont
      \Huge \bfseries #1\par}%
     \@endpart}
+    
 \def\@endpart{\vfil\newpage
               \if@twoside
                \if@openright
@@ -363,11 +386,13 @@
               \if@tempswa
                 \twocolumn
               \fi}
+              
 \newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{plain}%
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
+                    
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
                          \refstepcounter{chapter}%
@@ -393,7 +418,7 @@
 \def\@makechapterhead#1{%
 %  \vspace*{10\p@}%
   {\parindent \z@ \raggedright \normalfont
-    \begin{flushleft}										%Was flushright => changes chapter alignment..
+    \begin{flushleft}	%Was flushright => changes chapter alignment..
       \ifnum \c@secnumdepth >\m@ne
         \if@mainmatter
 %          \huge\bfseries 
@@ -409,22 +434,25 @@
     \end{flushleft}										%Was flushright => changes chapter alignment..
     \vskip 20\p@
   }}
+  
 \def\@schapter#1{\if@twocolumn
                    \@topnewpage[\@makeschapterhead{#1}]%
                  \else
                    \@makeschapterhead{#1}%
                    \@afterheading
                  \fi}
+                 
 \def\@makeschapterhead#1{%
 %  \vspace*{10\p@}%
   {\parindent \z@ \raggedright
     \normalfont
     \interlinepenalty\@M
-    \begin{flushleft}									%Was flushright => changes contents, list of tabels at the beggining...
+    \begin{flushleft} %Was flushright => changes contents, list of tabels at the beggining...
 	\Huge \bfseries  #1\par\nobreak
-    \end{flushleft}										%Was flushright => changes contents, list of tabels at the beggining...
+    \end{flushleft} %Was flushright => changes contents, list of tabels at the beggining...
     \vskip 20\p@
   }}
+  
 \newcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
@@ -450,10 +478,12 @@
 \else
   \setlength\leftmargini  {2.5em}
 \fi
+
 \leftmargin  \leftmargini
 \setlength\leftmarginii  {2.2em}
 \setlength\leftmarginiii {1.87em}
 \setlength\leftmarginiv  {1.7em}
+
 \if@twocolumn
   \setlength\leftmarginv  {.5em}
   \setlength\leftmarginvi {.5em}
@@ -461,12 +491,14 @@
   \setlength\leftmarginv  {1em}
   \setlength\leftmarginvi {1em}
 \fi
+
 \setlength  \labelsep  {.5em}
 \setlength  \labelwidth{\leftmargini}
 \addtolength\labelwidth{-\labelsep}
 \@beginparpenalty -\@lowpenalty
 \@endparpenalty   -\@lowpenalty
 \@itempenalty     -\@lowpenalty
+
 \renewcommand\theenumi{\@arabic\c@enumi}
 \renewcommand\theenumii{\@alph\c@enumii}
 \renewcommand\theenumiii{\@roman\c@enumiii}
@@ -482,10 +514,12 @@
 \newcommand\labelitemii{\normalfont\bfseries \textendash}
 \newcommand\labelitemiii{\textasteriskcentered}
 \newcommand\labelitemiv{\textperiodcentered}
+
 \newenvironment{description}
                {\list{}{\labelwidth\z@ \itemindent-\leftmargin
                         \let\makelabel\descriptionlabel}}
                {\endlist}
+               
 \newcommand*\descriptionlabel[1]{\hspace\labelsep
                                 \normalfont\bfseries #1}
 \newenvironment{verse}
@@ -497,6 +531,7 @@
                         \advance\leftmargin 1.5em}%
                 \item\relax}
                {\endlist}
+               
 \newenvironment{quotation}
                {\list{}{\listparindent 1.5em%
                         \itemindent    \listparindent
@@ -504,10 +539,12 @@
                         \parsep        \z@ \@plus\p@}%
                 \item\relax}
                {\endlist}
+               
 \newenvironment{quote}
                {\list{}{\rightmargin\leftmargin}%
                 \item\relax}
                {\endlist}
+               
 \if@compatibility
 \newenvironment{titlepage}
     {%
@@ -541,175 +578,8 @@
     }
 \fi
 
-\newcommand\appendix[1]{
-  \par
-  \setcounter{chapter}{0}%
-  \setcounter{section}{0}%
-  \gdef\@chapapp{\titulos\appendixname}%
-  \gdef\thechapter{\@Alph\c@chapter}
-  #1
-  \cleardoublepage
-}
-
-\setlength\arraycolsep{5\p@}
-\setlength\tabcolsep{6\p@}
-\setlength\arrayrulewidth{.4\p@}
-\setlength\doublerulesep{2\p@}
-\setlength\tabbingsep{\labelsep}
-\skip\@mpfootins = \skip\footins
-\setlength\fboxsep{3\p@}
-\setlength\fboxrule{.4\p@}
-\@addtoreset {equation}{chapter}
-\renewcommand\theequation
-  {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
-\newcounter{figure}[chapter]
-\renewcommand \thefigure
-     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
-\def\fps@figure{tbp}
-\def\ftype@figure{1}
-\def\ext@figure{lof}
-\def\fnum@figure{\figurename\nobreakspace\thefigure}
-\newenvironment{figure}
-               {\@float{figure}}
-               {\end@float}
-\newenvironment{figure*}
-               {\@dblfloat{figure}}
-               {\end@dblfloat}
-\newcounter{table}[chapter]
-\renewcommand \thetable
-     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
-\def\fps@table{tbp}
-\def\ftype@table{2}
-\def\ext@table{lot}
-\def\fnum@table{\tablename\nobreakspace\thetable}
-\newenvironment{table}
-               {\@float{table}}
-               {\end@float}
-\newenvironment{table*}
-               {\@dblfloat{table}}
-               {\end@dblfloat}
-\newlength\abovecaptionskip
-\newlength\belowcaptionskip
-\setlength\abovecaptionskip{10\p@}
-\setlength\belowcaptionskip{0\p@}
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{#1: #2}%
-  \ifdim \wd\@tempboxa >\hsize
-    #1: #2\par
-  \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
-\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
-\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
-\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
-\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
-\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
-\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
-\DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
-\DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
-\newcommand\@pnumwidth{1.55em}
-\newcommand\@tocrmarg{2.55em}
-\newcommand\@dotsep{4.5}
-\setcounter{tocdepth}{2}
-
-\newcommand\tableofcontents{%
-	\phantomsection \label{summary}
-	\addcontentsline{toc}{chapter\label{summary}}{Summary}
-
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\titulos\contentsname
-        \@mkboth{%
-           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-	\@starttoc{toc}%
-    \if@restonecol\twocolumn\fi
-}
-    
-\newcommand*\l@part[2]{%
-  \ifnum \c@tocdepth >-2\relax
-    \addpenalty{-\@highpenalty}%
-    \addvspace{2.25em \@plus\p@}%
-    \setlength\@tempdima{3em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      {\leavevmode
-       \large \bfseries #1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
-       \nobreak
-         \global\@nobreaktrue
-         \everypar{\global\@nobreakfalse\everypar{}}%
-    \endgroup
-  \fi}
-\newcommand*\l@chapter[2]{%
-  \ifnum \c@tocdepth >\m@ne
-    \addpenalty{-\@highpenalty}%
-    \vskip 1.0em \@plus\p@
-    \setlength\@tempdima{1.5em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode \bfseries
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-      \penalty\@highpenalty
-    \endgroup
-  \fi}
-\newcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
-\newcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
-\newcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
-\newcommand*\l@paragraph{\@dottedtocline{4}{10em}{5em}}
-\newcommand*\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
-
-\newcommand\listoffigures{%
-	\phantomsection \label{listoffigures}
-	\addcontentsline{toc}{chapter\label{listoffigures}}{List of Figures}
-
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\titulos\listfigurename}%
-      \@mkboth{\MakeUppercase\listfigurename}%
-              {\MakeUppercase\listfigurename}%
-    \@starttoc{lof}%
-    \if@restonecol\twocolumn\fi
-    
-    \cleardoublepage
-}
-    
-\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
-
-\newcommand\listoftables{%
-	\phantomsection \label{listoftables}
-	\addcontentsline{toc}{chapter\label{listoftables}}{List of Tables}
-
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\titulos\listtablename}%
-      \@mkboth{%
-          \MakeUppercase\listtablename}%
-         {\MakeUppercase\listtablename}%
-    \@starttoc{lot}%
-    \if@restonecol\twocolumn\fi
-
-	\cleardoublepage
-}
-    
-\let\l@table\l@figure
-\newdimen\bibindent
-\setlength\bibindent{1.5em}
+% O novo ambiente "thebibliography" precisa ser criado antes
+% de incluir o formatacaoUBI para definir o formato de elementos como a secção bibliografia.
 \newenvironment{thebibliography}[1]
      {\chapter*{\bibname}%
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
@@ -729,6 +599,7 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
+      
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
 \newenvironment{theindex}
@@ -746,6 +617,202 @@
                 \columnsep 35\p@
                 \let\item\@idxitem}
                {\if@restonecol\onecolumn\else\clearpage\fi}
+
+\usepackage{template/formatacaoUBI}
+
+\newcommand\appendix[1]{
+  \par
+  \setcounter{chapter}{0}%
+  \setcounter{section}{0}%
+  % Como a numeração dos capítulos está sendo reiniciada para os apêndices,
+  % o bookmark no PDF apontava para o primeiro capítulo.
+  % O comando abaixo corrige isto.
+  \renewcommand{\theHchapter}{appendix\the\value{chapter}}
+  
+  \gdef\@chapapp{\titulos\appendixname}%
+  \gdef\thechapter{\@Alph\c@chapter}
+  #1
+  \cleardoublepage
+}
+
+\setlength\arraycolsep{5\p@}
+\setlength\tabcolsep{6\p@}
+\setlength\arrayrulewidth{.4\p@}
+\setlength\doublerulesep{2\p@}
+\setlength\tabbingsep{\labelsep}
+\skip\@mpfootins = \skip\footins
+\setlength\fboxsep{3\p@}
+\setlength\fboxrule{.4\p@}
+\@addtoreset {equation}{chapter}
+
+\renewcommand\theequation
+  {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
+  
+\newcounter{figure}[chapter]
+
+\renewcommand \thefigure
+     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
+     
+\def\fps@figure{tbp}
+\def\ftype@figure{1}
+\def\ext@figure{lof}
+\def\fnum@figure{\figurename\nobreakspace\thefigure}
+\newenvironment{figure}
+               {\@float{figure}}
+               {\end@float}
+               
+\newenvironment{figure*}
+               {\@dblfloat{figure}}
+               {\end@dblfloat}
+               
+\newcounter{table}[chapter]
+
+\renewcommand \thetable
+     {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
+     
+\def\fps@table{tbp}
+\def\ftype@table{2}
+\def\ext@table{lot}
+\def\fnum@table{\tablename\nobreakspace\thetable}
+
+\newenvironment{table}
+               {\@float{table}}
+               {\end@float}
+               
+\newenvironment{table*}
+               {\@dblfloat{table}}
+               {\end@dblfloat}
+               
+\newlength\abovecaptionskip
+\newlength\belowcaptionskip
+\setlength\abovecaptionskip{10\p@}
+\setlength\belowcaptionskip{0\p@}
+
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1: #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1: #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+  
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
+\DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
+
+\newcommand\@pnumwidth{1.55em}
+\newcommand\@tocrmarg{2.55em}
+\newcommand\@dotsep{4.5}
+\setcounter{tocdepth}{2}
+
+\newcommand\tableofcontents{%
+	\phantomsection \label{summary}
+	\addcontentsline{toc}{chapter\label{summary}}{\contentsname}
+
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\titulos\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+	\@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    
+    \cleardoublepage
+}
+    
+\newcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries #1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
+       \nobreak
+         \global\@nobreaktrue
+         \everypar{\global\@nobreakfalse\everypar{}}%
+    \endgroup
+  \fi}
+  
+\newcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+  
+\newcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+\newcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
+\newcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
+\newcommand*\l@paragraph{\@dottedtocline{4}{10em}{5em}}
+\newcommand*\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
+
+\newcommand\listoffigures{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \phantomsection 
+    \label{listoffigures}
+    \addcontentsline{toc}{chapter\label{listoffigures}}{\listfigurename}
+    \chapter*{\titulos\listfigurename}
+      \@mkboth{\MakeUppercase\listfigurename}%
+              {\MakeUppercase\listfigurename}%
+    \@starttoc{lof}%
+    \if@restonecol\twocolumn\fi
+    \cleardoublepage
+}
+    
+\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+
+\newcommand\listoftables{%
+	\phantomsection \label{listoftables}
+	\addcontentsline{toc}{chapter\label{listoftables}}{\listtablename}
+
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\titulos\listtablename}%
+      \@mkboth{%
+          \MakeUppercase\listtablename}%
+         {\MakeUppercase\listtablename}%
+    \@starttoc{lot}%
+    \if@restonecol\twocolumn\fi
+
+	\cleardoublepage
+}
+    
+\let\l@table\l@figure
+\newdimen\bibindent
+\setlength\bibindent{1.5em}
+
+               
 \newcommand\@idxitem{\par\hangindent 40\p@}
 \newcommand\subitem{\@idxitem \hspace*{20\p@}}
 \newcommand\subsubitem{\@idxitem \hspace*{30\p@}}
@@ -759,21 +826,7 @@
     \parindent 1em%
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
-\newcommand\contentsname{Contents}
-\newcommand\listalgorithmname{List of Algorithms}
-\newcommand\listfigurename{List of Figures}
-\newcommand\listtablename{List of Tables}
-\newcommand\bibname{Bibliography}
-\newcommand\indexname{Index}
-\newcommand\figurename{Figure}
-\newcommand\tablename{Table}
-\newcommand\partname{Part}
-\newcommand\chaptername{Chapter}
-\newcommand\appendixname{Appendix}
-\def\today{\ifcase\month\or
-  January\or February\or March\or April\or May\or June\or
-  July\or August\or September\or October\or November\or December\fi
-  \space\number\day, \number\year}
+  
 \setlength\columnsep{10\p@}
 \setlength\columnseprule{0\p@}
 \pagestyle{headings}
@@ -790,5 +843,4 @@
   \onecolumn
 \fi
 \endinput
-%%
-%% End of file.
+

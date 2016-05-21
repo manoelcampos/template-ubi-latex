@@ -1,24 +1,26 @@
 \documentclass[10pt,twoside]{template/estiloUBI}
 
-\usepackage{template/formatacaoUBI}
-
-\usepackage{array,verbatim}
 \setmainfont{Trebuchet MS}
 
-%%Comentar a linha seguinte se escrever a tese em inglês
+% Comment this line if you are writing your thesis in English
 \portugues
 
 %%Para gerar índice remissivo (que será inserido no documento com o comando \printindex)
 \makeindex
 
 \thesistitle{Título da Tese}
-
 % Se existir um sub-título, descomente a linha abaixo e 
 %\thesissubtitle{Sub-título da Tese}
 
+%Nome da faculdade
+\facultyname{Engenharia}
+
+% Ciclo de estudos (1º, 2º ou 3º)
+\studiescyclenumber{3\textsuperscript{o}}
+
 \thesisauthors{Nome do Autor da Tese}
 \thesistype{Tese de Doutoramento}
-\thesislocalanddate{Covilhã, May of 2016.}
+\thesislocalanddate{Covilhã, Maio de 2016.}
 
 \thesissupervisors{
 	Orientador: Prof. Doutor Nome\\
@@ -76,7 +78,7 @@
 \listofalgorithms  % Lista de Algoritmos (Opcional)
 \thesisacronyms{\input{Acronimos}}  % Lista de Acrónimos  (Opcional)
 
-\mainmatter
+\mainmatter % inicia páginas em números arábicos a partir do 1
 
 % Os capítulos são inseridos a partir daqui 
 \include{Intro}
@@ -88,7 +90,7 @@
 \thesisbibliography{template/estilo-biblio}{bibliografia}
 
 % Exemplo de uso de outro estilo bibliográfico. Define ser definido apenas um estilo 
-%\thesisbibliography{template/IEEEtran}{references}
+%\thesisbibliography{template/IEEEtran}{bibliografia}
 
 \appendix{\input{Anexos}} % Anexos (Opcional)
 \thesisglossary{\input{Glossario}}  % Glossário (Opcional)
