@@ -1,7 +1,47 @@
-# Modelo em LaTeX para a escrita de teses na Universidade da Beira Interior (UBI) [![license](https://img.shields.io/badge/license-GPL%20v3-orange.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
+# Modelo em LaTeX para a escrita de teses e dissertações da Universidade da Beira Interior (UBI) [![license](https://img.shields.io/badge/license-GPL%20v3-orange.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
-O presente projeto disponibiliza um modelo em LaTeX para a escrita de teses da [Universidade da Beira Interior (UBI)](http://www.ubi.pt) 
+O presente projeto é uma versão **NÃO OFICIAL** do modelo em LaTeX de teses e dissertações da [Universidade da Beira Interior (UBI)](http://www.ubi.pt) 
 de acordo com o despacho reitoral nº [49/R/2010](https://academicos.ubi.pt/online/pdfHandler.ashx?file=bv/legislacao/Despacho_49_R_2010.pdf).
+
+Esta é uma versão reestruturada do projeto original disponibilizado em [e-projects.ubi.pt](http://www.e-projects.ubi.pt/latex/template.html)
+que conta com os seguintes recursos e características:
+
+- **Separação total dos comandos e formatação do template de dentro dos ficheiros tex que compõem a tese/dissertação:** 
+  os documentos da tese ficam extremamente simples, organizados e 
+  muito mais fáceis para utilizadores, mesmo iniciantes em LaTeX, perceberam seu conteúdo.
+  Tal separação permite que os utilizadores possam atualizar suas teses para novas
+  versões do template imediatamente e sem traumas. Isto também elimina riscos de introduzirem
+  erros que façam com que a tese deixe de compilar ou mesmo que 
+  percam conteúdo movendo conteúdo para uma nova versão do template.
+- **Inclusão de metadados no ficheiro PDF gerado (autor, assunto, etc)**: 
+  permite identificar, catalogar e localizar a tese mais facilmente a partir dos metadados.
+- **Definição de títulos em inglês e português para todos os elementos da tese/dissertação 
+   (como agradecimentos, dedicatória, lista de acrônimos, lista de algoritmos, etc)**:
+   Na versão anterior, apenas elementos padrões do latex (como capítulos, secções e listas de figuras)
+   eram traduzidos de acordo com o idioma escolhido pelo utilizador.
+- **Instruções completas com todos os pré-requisitos para compilar o template em sistemas Linux, Windows e Mac OSX:** mostra tudo que um usuário iniciante precisa
+  saber para configurar seu sistema operativo e assim compilar o template.
+- **Criação dos seguintes comandos para definir informações da tese/dissertação dentro do documento do utilizador:**
+    - \thesisauthors       : nome do autor
+    - \thesistitle         : título da tese
+    - \thesissubtitle      : sub-título da tese (opcional)
+    - \thesistype          : tipo da tese (proposta de tese, dissertação de mestrado ou tese de doutoramento)
+    - \thesislocalanddate  : sítio e data de publicação da tese
+    - \thesissupervisors   : orientador e co-orientadores
+    - \thesisthanks        : agradecimentos (opcional)
+    - \thesisdedication    : dedicatória (opcional)
+    - \thesisforewords     : prefácio (opcional)
+    - \thesisabstract      : abstract (inglês)
+    - \thesisresumo        : resumo (português)
+    - \thesisresumoalargado: resumo alargado em português (apenas para teses escritas em inglês)
+    - \thesisacronyms      : lista de acrônimos (opcional)
+    - \thesisglossary      : glossário (opcional)
+    - \facultyname         : nome da faculdade
+    - \studiescyclenumber  : número do ciclo de estudos (1º, 2º ou 3º).
+    - \thesisbibliography  : estilo bibliográfico e arquivo de bibliografia. 
+
+Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
+do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
 
 ![Capa de tese de exemplo](imagens/capa-tese-exemplo.png)
 
@@ -135,15 +175,17 @@ O modelo foi compilado em *XeLaTeX* sem erros em alguns sistemas operativos, com
 
 - O projeto é protegido pela [Licença GPLv3](LICENSE.txt). 
 
-# Contribuiçõees, dúvidas e sugestões
+# Autores
 
-Entre em contacto pelo email <latex@e-projects.ubi.pt>
+- Autor desta versão modificada do template
+    - Manoel Campos da Silva Filho - Departamento de Informática (DI/UBI)
 
-# Sítio oficial
+- Autores da [versão original](http://www.e-projects.ubi.pt/latex/template.html)
+    - João Ferro, Norberto Barroca, Rui Paulo - Instituto de Telecomunicações, Departamento de Engenharia Eletromecânica (DEM/UBI) 
+    - Paulo Machado - Departamento de Ciências Aeroespaciais (DCA/UBI)
 
-- <http://www.e-projects.ubi.pt/latex>
+# AVISO
 
-# Autores e Colaboradores
-
-- Rui Paulo
-- Manoel Campos da Silva Filho
+Esta é uma versão modificada do [template original](http://www.e-projects.ubi.pt/latex/template.html), que é disponibilizado sob licença GPLv3. 
+Desta forma, os autores originais não devem ser contactados a respeito de dúvidas referentes
+à esta versão. Tais questões devem ser direcionadas para [Manoel Campos](http://about.me/manoelcampos). 
