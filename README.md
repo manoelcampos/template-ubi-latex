@@ -57,7 +57,7 @@ Para criar e editar ficheiros tex, apesar de não ser um pré-requisito, o mais 
 No entanto, pode-se editar os ficheiros tex em qualquer editor de texto que suporte codificação de caracteres em UTF-8
 (como o Notepad do Windows ou qualquer editor de texto nativo de sistemas Linux e Mac OSX).
 
-Existem diversas alternativas de editores tanto gratuitos como pagos.
+Existem diversas alternativas de editores, tanto gratuitos como pagos.
 Um excelente editor que funciona em diversos sistemas operativos
 é o [TeXstudio](http://www.texstudio.org), que foi baseado em versões atualmente descontinuadas
 do Texmaker e TexMakerX. 
@@ -81,16 +81,16 @@ Em sistemas Windows deve ser instalada a distribuição LaTeX denominada [MiKTeX
 ### Utilizadores de Linux
 
 Em sistemas Linux deve ser instalada a distribuição LaTeX denominada *texlive-full*.
-A instalação pode ser feita por meio de ferramentas gráficas como a Central de Software disponível em sistemas
+A instalação pode ser feita por meio de ferramentas gráficas como a "Central de Software" disponível em sistemas
 como Ubuntu, ou por meio do terminal utilizando um gerenciador de pacotes.
 
 Diferentes distribuições Linux possuem seus próprios gerenciadores de pacote e cada utilizador deve verificar qual
-é o utilizado em seu sistema. No entanto, a seguir são mostrados alguns exemplos
+é o disponível para seu sistema. No entanto, a seguir são mostrados alguns exemplos
 de gerenciadores de pacotes, a serem executados a partir de um terminal, para distribuições Linux conhecidas.
 
-- Distribuições Linux baseadas em Debian (como Ubuntu e Linux Mint): `sudo apt-get install texlive-full`
-- Distribuições Linux baseadas em Red Hat (como Fedora e CentOS): `sudo yum install texlive-full`
-- Distribuições Linux baseadas em ArchLinux (como ArchBang): `sudo pacman install texlive-full`
+- Debian e derivados (como Ubuntu e Linux Mint): `sudo apt-get install texlive-full`
+- Red Hat e derivados (como Fedora e CentOS): `sudo yum install texlive-full`
+- ArchLinux e derivados (como ArchBang): `sudo pacman install texlive-full`
 
 Os utilizadores de sistema Linux baseados em Debian (como Ubuntu e Linux Mint) 
 têm que instalar também o pacote "ttf-mscorefonts-installer" para utilizar o tipo de letra *Trebuchet*. 
@@ -98,7 +98,7 @@ Não foram realizados testes em outras distribuições Linux.
 
 ### Utilizadores de Mac OSX
 
-Em sistemas Mac OSX deve ser instalada a disgtribuição LaTeX denominada [MacTeX](https://tug.org/mactex/).
+Em sistemas Mac OSX deve ser instalada a distribuição LaTeX denominada [MacTeX](https://tug.org/mactex/).
 Adicionalmente deve ser instalada a letra *Trebuchet*, cujas instruções estão disponíveis em 
 <http://www.e-projects.ubi.pt/latex/trebuchet-macos.html>.
 
@@ -125,12 +125,12 @@ Os ficheiros desta tese de exemplo são listados a seguir.
 
 Para compilar a tese de exemplo para um ficheiro PDF, pode-se definir nas configurações do seu editor LaTeX 
 que o compilador por defeito deve ser o *XeLaTeX*. Desta forma, sempre que mandares
-compilar a tese, não precisarás escolher qual o compilador.
+compilar a tese, não precisarás escolher o compilador.
 Outra forma é utilizar os menus disponíveis no editor para 
-escolher o XeLaTeX a cada vez que for compilar a tese.
+escolher o *XeLaTeX* a cada vez que for compilar a tese.
 
 O sítio onde define-se o compilador por defeito e onde pode-se
-escolher o compilador varia de acordo com o editor em uso.
+escolher um compilador varia de acordo com o editor em uso.
 Assim, verifique a documentação do seu editor para mais detalhes.
 
 Para os programadores que são familiarizados com o terminal,
@@ -143,12 +143,12 @@ há os comandos abaixo disponíveis:
 - **make clean** apaga todos os ficheiros temporários criados no processo de compilação.
 
 Se tiveres começado a criar sua tese utilizando um ficheiro diferente do *Tese.tex*,
-para compilar utilizando o comando make, é preciso editar o ficheiro [Makefile](Makefile) 
-e informar o nome do ficheiro tex principal da sua tese na primeira linha do Makefile.
+para compilar utilizando o comando *make*, é preciso editar o ficheiro [Makefile](Makefile) 
+e informar o nome do ficheiro tex principal da sua tese na primeira linha do *Makefile*.
 
 # Ficheiros específicos do modelo
 
-Os ficheiros específicos do modelo podem ser acedidos a partir do directório *template*. 
+Os ficheiros específicos do modelo podem ser acedidos a partir do directório [template](template). 
 No entanto, ao menos que tenhas certeza do que estás a fazer, não edite tais ficheiros. 
 A seguir é listado o conteúdo de tal directório.
 
@@ -177,7 +177,7 @@ O modelo foi compilado em *XeLaTeX* sem erros em alguns sistemas operativos, com
 
 # Autores
 
-- Autor desta versão modificada do template
+- Autor desta versão do template
     - Manoel Campos da Silva Filho - Departamento de Informática (DI/UBI)
 
 - Autores da [versão original](http://www.e-projects.ubi.pt/latex/template.html)
@@ -186,6 +186,6 @@ O modelo foi compilado em *XeLaTeX* sem erros em alguns sistemas operativos, com
 
 # AVISO
 
-Esta é uma versão modificada do [template original](http://www.e-projects.ubi.pt/latex/template.html), que é disponibilizado sob licença GPLv3. 
+Esta é uma versão modificada do [template oficial](http://www.e-projects.ubi.pt/latex/template.html). 
 Desta forma, os autores originais não devem ser contactados a respeito de dúvidas referentes
 à esta versão. Tais questões devem ser direcionadas para [Manoel Campos](http://about.me/manoelcampos). 
