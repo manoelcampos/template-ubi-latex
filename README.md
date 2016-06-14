@@ -1,5 +1,7 @@
 # Modelo em LaTeX para a escrita de teses e dissertações da Universidade da Beira Interior (UBI) [![license](https://img.shields.io/badge/license-GPL%20v3-orange.svg)](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
+![Capa de tese de exemplo](imagens/capa-tese-exemplo.png)
+
 O presente projeto é uma versão **NÃO OFICIAL** do modelo em LaTeX de teses e dissertações da [Universidade da Beira Interior (UBI)](http://www.ubi.pt) 
 de acordo com o despacho reitoral nº [49/R/2010](https://academicos.ubi.pt/online/pdfHandler.ashx?file=bv/legislacao/Despacho_49_R_2010.pdf).
 
@@ -42,8 +44,6 @@ que conta com os seguintes recursos e características:
 
 Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
 do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
-
-![Capa de tese de exemplo](imagens/capa-tese-exemplo.png)
 
 # Como utilizar o modelo para escrever sua tese
 
