@@ -53,7 +53,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{template/estiloUBI}[2016/05/19 v2.2 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesClass{template/estiloUBI}[2016/06/14 v3.0 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 \usepackage{ifxetex}
 \ifxetex
