@@ -683,8 +683,6 @@
                {\@dblfloat{table}}
                {\end@dblfloat}
                
-\newlength\abovecaptionskip
-\newlength\belowcaptionskip
 \setlength\abovecaptionskip{10\p@}
 \setlength\belowcaptionskip{0\p@}
 
