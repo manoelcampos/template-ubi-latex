@@ -1,3 +1,5 @@
+Tese.pdf
+Thesis.pdf
 .DS_Store
 *.dvi
 *.tdo
@@ -23,3 +25,10 @@
 *.lot
 _Ficheiros_Reservado_DOCS_Despacho_49_R_2010.pdf
 _Ficheiros_Reservado_DOCS_Modelo_Tese.doc
+
+# Projeto IntelliJ IDEA
+.idea/
+
+# Arquivos gerados pelo latexmk
+*.fdb_latexmk
+*.fls
