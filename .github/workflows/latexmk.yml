@@ -47,7 +47,7 @@ jobs:
           # [Deprecated] Optional. Install extra packages by sudo tlmgr install
           #extra_packages:
           # Optional. Install extra packages by apk
-          #extra_system_packages:
+          extra_system_packages: ttf-mscorefonts-installer
 
       # Includes the AsciiDoctor GitHub Pages Action to convert adoc files to html and publish to gh-pages branch
       - name: asciidoctor-ghpages
