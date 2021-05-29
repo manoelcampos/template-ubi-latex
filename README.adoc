@@ -17,7 +17,7 @@ endif::[]
 
 :description: Modelo em LaTeX para a escrita de teses e dissertações da Universidade da Beira Interior (UBI)
 
-= {description} image:https://img.shields.io/badge/license-GPL%20v3-orange.svg[license,link=http://www.gnu.org/licenses/gpl-3.0.en.html]
+= {description} image:https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml/badge.svg[link=https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml] image:https://img.shields.io/badge/license-GPL%20v3-orange.svg[license,link=http://www.gnu.org/licenses/gpl-3.0.en.html]
 
 image:imagens/capa-tese-exemplo.png[Capa de tese de exemplo]
 
