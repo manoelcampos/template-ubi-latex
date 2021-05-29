@@ -1,5 +1,5 @@
 FILE=Tese
-TEMP_FILE_EXTENSIONS=log aux lof loc loa lol lot bit idx glo bbl brf nlo nls ilg toc ind out blg synctex.gz snm nav soc thm fdb_latexmk fls
+TEMP_FILE_EXTENSIONS=log aux lof loc loa lol lot bit idx glo bbl brf nlo nls ilg toc ind out blg synctex.gz snm nav soc thm fdb_latexmk fls ilg ind
 all:
 	latexmk -r .latexmkrc -quiet -pdf -file-line-error -halt-on-error -interaction=nonstopmode "$(FILE).tex"
 
