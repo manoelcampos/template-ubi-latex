@@ -1,4 +1,4 @@
-// :pdf_link: https://github.com/manoelcampos/ft-unb-latex-template/blob/gh-pages/principal.pdf
+:pdf_link: https://github.com/manoelcampos/template-ubi-latex/blob/gh-pages/Tese.pdf
 
 :numbered:
 :icons: font
@@ -19,7 +19,7 @@ endif::[]
 
 = {description} image:https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml/badge.svg[link=https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml] image:https://img.shields.io/badge/license-GPL%20v3-orange.svg[license,link=http://www.gnu.org/licenses/gpl-3.0.en.html]
 
-image:imagens/capa-tese-exemplo.png[Capa de tese de exemplo]
+image:imagens/capa-tese-exemplo.png[link={pdf_link}]
 
 == Introdução
 O presente projeto é uma versão *NÃO OFICIAL* do modelo em LaTeX de teses e dissertações da http://www.ubi.pt[Universidade da Beira Interior (UBI)]
@@ -126,7 +126,7 @@ http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
 
 Juntamente com o modelo é disponibilizado um exemplo de tese, a partir do qual
 o utilizador pode editar e escrever sua própria tese.
-Uma versão compilada para PDF está disponível para visualização no ficheiro link:Tese.pdf[Tese.pdf].
+Uma versão compilada para PDF está disponível para visualização no ficheiro link:{pdf_link}[Tese.pdf].
 
 Os ficheiros desta tese de exemplo são listados a seguir.
 
