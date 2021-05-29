@@ -37,7 +37,7 @@ jobs:
           # Ao passar um parâmetro adicional, os default deixam de ser passados e precisam ser explicitamente incluídos.
           args: -r .latexmkrc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           # Arbitrary bash codes to be executed before compiling LaTeX documents. Optional
-          #pre_compile: pdflatex -file-line-error -interaction=nonstopmode "principal.tex"; bibtex "principal.aux"; makeindex "principal" && makeindex "principal.nlo" -s nomencl.ist -o "principal.nls"
+          pre_compile: update-ms-fonts && fc-cache -f
           # Arbitrary bash codes to be executed after compiling LaTeX documents. Optional
           post_compile: ls -lh *.pdf
           # The LaTeX engine to be invoked. Optional, default is latexmk
@@ -47,7 +47,9 @@ jobs:
           # [Deprecated] Optional. Install extra packages by sudo tlmgr install
           #extra_packages:
           # Optional. Install extra packages by apk
-          extra_system_packages: ttf-mscorefonts-installer
+          # Instala fonte Trebuchet:
+          #   ttf-mscorefonts-installer no Ubuntu, msttcorefonts-installer no Alpine Linux
+          extra_system_packages: msttcorefonts-installer
 
       # Includes the AsciiDoctor GitHub Pages Action to convert adoc files to html and publish to gh-pages branch
       - name: asciidoctor-ghpages
