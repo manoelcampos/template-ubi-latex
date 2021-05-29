@@ -76,24 +76,30 @@
 \listoffigures     % Lista de Figuras    (Opcional)
 \listoftables      % Lista de Tabelas    (Opcional)
 \listofalgorithms  % Lista de Algoritmos (Opcional)
-\thesisacronyms{\input{Acronimos}}  % Lista de Acrónimos  (Opcional)
+\thesisacronyms{\input{Acronyms.tex}}  % Lista de Acrónimos  (Opcional)
 
 \mainmatter % inicia páginas em números arábicos a partir do 1
 
 % Os capítulos são inseridos a partir daqui 
-\include{Intro}
-\include{Exemplos}
+\include{Introduction}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+\include{Chapter5}
+\include{Samples}
+\include{Conclusion}
+
 % Fim da inserção dos capítulos
 
 % Bibliografia
 % Primeiro parâmetro é o estilo e o segundo o arquivo bib
-\thesisbibliography{template/estilo-biblio}{bibliografia}
+\thesisbibliography{template/estilo-biblio}{bibliography}
 
 % Exemplo de uso de outro estilo bibliográfico. Define ser definido apenas um estilo 
 %\thesisbibliography{template/IEEEtran}{bibliografia}
 
-\appendix{\input{Anexos}} % Anexos (Opcional)
-\thesisglossary{\input{Glossario}}  % Glossário (Opcional)
+\appendix{\input{Appendix.tex}} % Anexos (Opcional)
+\thesisglossary{\input{Glossary.tex}}  % Glossário (Opcional)
 
 \printindex % Inserir índice remissivo (Opcional)
 

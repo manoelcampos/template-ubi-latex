@@ -30,7 +30,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           # The root LaTeX file to be compiled
-          root_file: Tese.tex
+          root_file: Thesis.tex
           # Extra arguments to be passed to the LaTeX engine. Optional.
           # Default is -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           # Passa o nome do arquivo que contém a forma correta de chamar o comando makeindex pelo latexmk para o template.
@@ -56,4 +56,4 @@ jobs:
         uses: manoelcampos/asciidoctor-ghpages-action@v2
         with:
           #asciidoctor_params: --attribute=nofooter
-          post_build: git add -f Tese.pdf
+          post_build: git add -f Thesis.pdf

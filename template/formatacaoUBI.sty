@@ -4,7 +4,7 @@
 %
 %% Versão 2.9 - 14/06/2016 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
 %   - Separação total dos comandos e formatações do template de dentro dos ficheiros tex
-%     que compõem a tese do utilizador. Desta forma, como pode ser visto no Tese.tex,
+%     que compõem a tese do utilizador. Desta forma, como pode ser visto no Thesis.tex,
 %     os documentos da tese ficam extremamente simples, organizados e 
 %     muito mais fáceis para os utilizadores, mesmo iniciantes em LaTeX, perceberam seu conteúdo.
 %     Tal separação permite que os utilizadores possam atualizar suas teses para novas
@@ -16,7 +16,7 @@
 %   - Remoção da necessidade de importar o ficheiro formatacaoUBI no documento principal.
 %     Tal ficheiro agora é importado diretamente pelo template
 %     (dentro do estiloUBI.cls). Desta forma, o utilizador
-%     só precisa usar a classe estiloUBI na primeira linha do seu documento principal (normalmente Tese.tex),
+%     só precisa usar a classe estiloUBI na primeira linha do seu documento principal (normalmente Thesis.tex),
 %     como indicado no seguinte exemplo: \documentclass[10pt,twoside]{template/estiloUBI}
 % 	- Criação dos seguintes comandos para definir informações da tese:
 %	  	\thesisauthors       : nome do autor
@@ -38,10 +38,10 @@
 %     	\thesisbibliography  : estilo bibliográfico e arquivo de bibliografia. 
 %			Exemplo - \thesisbibliography{template/estilo-biblio}{bibliografia}
 %                     define o estilo bibliográfico template/estilo-biblio.bst
-%                     para o arquivo bibliografia.bib
+%                     para o arquivo bibliography.bib
 %     Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
 %     do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
-%     Com estes novos comandos, no ficheiro principal (por padrão Tese.tex)
+%     Com estes novos comandos, no ficheiro principal (por padrão Thesis.tex)
 %     pode-se definir tais variáveis, não precisando mais alterar nada na folha de rosto (PaginaRosto.tex).
 %   - Inclusão de metadados no ficheiro PDF gerado (autor, assunto, etc)
 %   - Incluído o hook \AtBeginDocument para adicionar automaticamente a PaginaRosto.tex
