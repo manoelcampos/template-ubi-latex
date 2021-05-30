@@ -47,7 +47,7 @@ jobs:
           # [Deprecated] Optional. Install extra packages by sudo tlmgr install
           #extra_packages:
           # Optional. Install extra packages by apk
-          # Instala fonte Trebuchet:
+          # Instala pacote de fontes (incluindo Trebuchet e Georgia):
           #   ttf-mscorefonts-installer no Ubuntu, msttcorefonts-installer no Alpine Linux
           extra_system_packages: msttcorefonts-installer
 

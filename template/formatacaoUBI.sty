@@ -2,7 +2,10 @@
 %% Este é o ficheiro formatacaoUBI.tex - NÃO EDITAR excepto a secção hypersetup!
 %% Define a formatação a ser usada em teses apresentadadas na Universidade da Beira Interior
 %
-%% Versão 2.9 - 14/06/2016 - Contribuições de Manoel Campos da Silva Filho - http://manoelcampos.com
+%% Versão 3.0.1 - 2021/05/30 - Adaptações para a versão oficial 3.0 (Manoel Campos da Silva Filho http://github.com/manoelcampos)
+%% Versão 3.0   - 2020/01/31 - Adaptado às normas do despacho Reitoral nº 2019/R/630
+%
+%% Versão 2.9.0 - 2016/06/14 - Contribuições de Manoel Campos da Silva Filho - http://github.com/manoelcampos
 %   - Separação total dos comandos e formatações do template de dentro dos ficheiros tex
 %     que compõem a tese do utilizador. Desta forma, como pode ser visto no Thesis.tex,
 %     os documentos da tese ficam extremamente simples, organizados e 
@@ -52,7 +55,7 @@
 %     Na versão anterior, apenas elementos padrões do latex (como capítulos, secções e listas de figuras)
 %     eram traduzidos de acordo com o idioma escolhido pelo utilizador.
 %
-%% Versão 2.1 - 28/03/2014 
+%% Versão 2.1 - 28/03/2014
 %   - Agora compila com o XeLaTeX por causa do tipo de fonte, incluido o estilo de biblipgrafia IEEE,
 %     possibilidade de escolha de tipo de fonte matemático
 %
@@ -87,26 +90,31 @@
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{template/formatacaoUBI}[2016/06/14 v3.0 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesPackage{template/formatacaoUBI}[2016/06/14 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
+\usepackage{acronym,gensymb,booktabs,verbatimbox,float}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+
 \usepackage{array,verbatim,mathspec,fontspec}
 \usepackage{amsmath,amscd,amsthm,xspace}	%Pacotes matemáticos 
-\usepackage{amssymb}%Fontes extra para matemáticos - http://www.ctan.org/tex-archive/fonts/amsfonts
+\usepackage{amssymb} %Fontes extra para matemáticos - http://www.ctan.org/tex-archive/fonts/amsfonts
 
 %%Para algoritmos  http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
 \usepackage{algorithm}
+%\usepackage[ruled, linesnumbered]{algorithm2e}
 \usepackage[noend]{algorithmic}
 
 % Descomentar para colocar tipo de letra aproximado ao Trebuchet nos ambientes matemáticos
 %\usepackage[math]{kurier} 
 
-% Permitir caracteresespeciais  http://www.ctan.org/pkg/fontenc, http://www.ctan.org/pkg/inputenc
+% Permitir caracteres especiais  http://www.ctan.org/pkg/fontenc, http://www.ctan.org/pkg/inputenc
 % Estes fazem falta na versão normal, mas em XeLaTeX tem que ser comentado	
 %\usepackage[latin1]{inputenc}	
 %\usepackage[T1]{fontenc}	
 
-\usepackage[a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}	%Papel A4, com margens
+\usepackage[a4paper,left=3.5cm,right=2.5cm,top=3.1cm,bottom=2.5cm]{geometry}	%Papel A4, com margens
 %\renewcommand{\baselinestretch}{1.05}
 
 % Permitir fontes vituais para codificação T1 - http://www.ctan.org/tex-archive/fonts/ae
@@ -116,40 +124,38 @@
 \usepackage[center,nooneline,font={footnotesize}]{caption}
 
 \setlength{\parindent}{0pt} %Sem tabulação em cada novo parágrafo
-\usepackage{parskip} %Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
-\setlength{\parskip}{0.53cm}
+% \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
+% \setlength{\parskip}{0.53cm}
 
 %% O código seguinte permite gerar um mini indice de capitulo (não referido no despacho reitoral)
 % \usepackage[nottoc, notlof, notlot]{tocbibind}
 % \usepackage{minitoc}
 % \setcounter{minitocdepth}{2}
 % \mtcindent=15pt
-%%Usar \minitoc para colocar o mini indice de capitulo
-
+%%Usar \minitoc para colocar o mini índice de capítulo
 
 %% Verificar se saída é pdf directo e ajustar o formato imagens a isso
 %\usepackage{ifpdf}
-%\ifpdf
-%  \usepackage[pdftex]{graphicx}							%Inserir gráficos  http://ctan.org/pkg/graphicx
-\usepackage{graphicx}
-  \DeclareGraphicsExtensions{.jpg,.png,.pdf} 	%Pdf directo apenas compativel com jpg, png...
-  % O pacote hyperref é usada para lidar com comandos referência cruzada  http://ctan.org/pkg/hyperref
-  \usepackage[pagebackref,hyperindex=true]{hyperref}				
-%\else
-%  \usepackage{graphicx}
-%  \DeclareGraphicsExtensions{.ps,.eps}	 %DVI directo apenas compativel com ps, eps...
-%  \usepackage[dvipdfm,pagebackref,hyperindex=true]{hyperref}
-%\fi
+\ifpdf
+	\usepackage[pdftex]{graphicx}							%Inserir gráficos  http://ctan.org/pkg/graphicx
+	\DeclareGraphicsExtensions{.jpg,.png,.pdf} 					%Pdf directo apenas compativel com jpg, png...
+	\usepackage[pagebackref,hyperindex=true]{hyperref}
+\else
+	\usepackage{graphicx}
+	\DeclareGraphicsExtensions{.jpg,.png,.pdf,.ps,.eps}						%DVI directo apenas compativel com ps, eps...
+	%\usepackage[dvipdfm,pagebackref,hyperindex=true]{hyperref}
+	\usepackage[pagebackref,hyperindex=true]{hyperref}
+\fi
 
 %Directorios onde por defeito serão buscadas as imagens a serem utilizadas na tese
 \graphicspath{{.}{images/}{imagens/}}	
 
-
 %%Passar para português
-%Descomentar para escrever com regras em Português sem ser em XeLaTeX  http://www.ctan.org/pkg/babel
+%Descomentar para escrever em Português em PDFLaTeX  http://www.ctan.org/pkg/babel
 %\newcommand{\portugues}{\usepackage[portuguese]{babel}		  								
 
-\usepackage{polyglossia} 
+%Descomentar para escrever com regras em Português ou Inglês em XeLaTeX
+\usepackage{polyglossia}
 \setmainlanguage{english} 
 
 % Texto para títulos de elementos como capítulos, seções    
@@ -159,10 +165,10 @@
 % Texto que sucede o número do ciclo de estudos
 \newcommand{\studiescycle}{cycle studies}
 \newcommand{\candidate}{Candidate}
-\newcommand{\thanksname}{Thanks}
+\newcommand{\thanksname}{Acknowledgements}
 \newcommand\dedicationname{Dedication}
 \newcommand\prefacename{Preface}
-\newcommand\listacronymname{List of Acronyms}
+\newcommand\listacronymname{Acronyms and Abbreviations}
 \providecommand\listalgorithmname{List of Algorithms}
 
 \newcommand\contentsname{Contents}
@@ -181,14 +187,14 @@
   July\or August\or September\or October\or November\or December\fi
   \space\number\day, \number\year}
 
-% Users of XeTeX are ad­vised to use poly­glos­sia rather than Ba­bel.
-% Comentar para escrever sem ser em modo XeLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
+% Users of XeTeX are advised to use polyglossia rather than Babel.
+% Comentar para escrever em modo PDFLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
 \newcommand{\portugues}{
 	\setmainlanguage{portuges} 	
 	\addto\captionsportuguese{\renewcommand{\contentsname}{Índice}}
-	\addto\captionsportuguese{\renewcommand{\prefacename}{Prefácio}}
 	\addto\captionsportuguese{\renewcommand{\indexname}{Índice Remissivo}}
-	\addto\captionsportuguese{\renewcommand{\listfigurename}{Lista de Figuras}}	
+	\addto\captionsportuguese{\renewcommand{\prefacename}{Prefácio}}
+	\addto\captionsportuguese{\renewcommand{\listfigurename}{Lista de Figuras}}
 	\addto\captionsportuguese{\renewcommand{\listtablename}{Lista de Tabelas}}	
 	\addto\captionsportuguese{\renewcommand{\bibname}{Bibliografia}}	
 	\addto\captionsportuguese{\renewcommand{\figurename}{Figura}}	
@@ -209,154 +215,155 @@
 }
 
 % New commands created by Manoel Campos da Silva Filho - http://manoelcampos.com
-	\newcommand{\thesisauthors}[1]{\def\thesisauthorsstr{#1}}
-	\newcommand{\thesistitle}[1]{\def\thesistitlestr{#1}}
-	\newcommand{\thesissubtitle}[1]{\def\thesissubtitlestr{#1}}
-	\newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
-	\newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
-	\newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
-	\newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
-	
-	%%Agradecimentos 
-	\newcommand{\thesisthanks}[1]{
-		\newpage 	
-		\phantomsection \label{thanks}
-		\addcontentsline{toc}{chapter\label{thanks}}{\thanksname}		
-		\section*{\titulos\thanksname}
-		\vspace{0.5cm}
-		#1
-		\cleardoublepage
-	}
-	
-	%Dedicatória
-	\newcommand{\thesisdedication}[1]{
-		\newpage 
-		\phantomsection \label{dedication}
-		\addcontentsline{toc}{chapter\label{dedication}}{\dedicationname}		
-		\section*{\titulos\dedicationname}
-		\vspace{0.5cm}
-		#1
-		\cleardoublepage
-		%\newpage 	
-		%\mbox{}
-		%\vfil
-		%\begin{center}
-		%Dedicated to...
-		%\end{center}
-		%\vfil
-		%\eject
-		%\cleardoublepage
-	}
-	
-	%Prefácio 
-	\newcommand{\thesisforewords}[1]{
-		\newpage 	
-		\phantomsection \label{preface}
-		\addcontentsline{toc}{chapter\label{preface}}{\prefacename}		
-		\section*{\titulos\prefacename}
-		\vspace{0.5cm}
-		#1
-		\cleardoublepage
-	}
-	
-	%Primeiro parametro é o resumo e o segundo as palavras chaves (em português)
-	\newcommand{\thesisresumo}[2]{
-		\newpage 	
-		\phantomsection \label{resumo}
-		\addcontentsline{toc}{chapter\label{resumo}}{Resumo}
-		\section*{\titulos{Resumo}}
-		\vspace{0.5cm}
-		#1
-		\vspace{2.2cm}
-		
-		{\titulos{Palavras-chave}}
-		
-		\vspace{0.8cm}
-		#2
-		\cleardoublepage	
-	}
-	
-	% Resumo alargado em português (somente para teses escritas em inglês)
-	\newcommand{\thesisresumoalargado}[1]{
-		\newpage 	
-		\phantomsection \label{resumo-alargado}
-		\addcontentsline{toc}{chapter\label{resumo-alargado}}{Resumo alargado}	
-		\section*{\titulos{Resumo alargado}}
-		\vspace{0.5cm}
-		#1
-		\cleardoublepage
-	}
-	
-	%Primeiro parametro é o abstract e o segundo as keywords (em inglês)
-	\newcommand{\thesisabstract}[2]{
-		%abstract+keywords
-		\newpage 	
-		\phantomsection \label{abstract}
-		\addcontentsline{toc}{chapter\label{abstract}}{Abstract}	
-		\section*{\titulos{Abstract}}
-		\vspace{0.5cm}
-		#1
-		
-		\vspace{2.2cm}
-		{\titulos{Keywords}}
-		
-		\vspace{0.8cm}
-		#2
-		\cleardoublepage
-	}
-	
-	
-	%Bibliografia: O primeiro parâmetro é o estilo e o segundo é o ficheiro bib
-	\newcommand{\thesisbibliography}[2]{
-		\cleardoublepage
-		\phantomsection \label{bibliography}
-		\addcontentsline{toc}{chapter\label{bibliography}}{\bibname}
-		
-		\bibliographystyle{#1}
-		\bibliography{#2}
-	}
-	
+\newcommand{\thesisauthors}[1]{\def\thesisauthorsstr{#1}}
+\newcommand{\thesistitle}[1]{\def\thesistitlestr{#1}}
+\newcommand{\thesissubtitle}[1]{\def\thesissubtitlestr{#1}}
+\newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
+\newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
+\newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
+\newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
 
-	%https://en.wikibooks.org/wiki/TeX/let
-	\let\originalListofalgorithms\listofalgorithms
-	\renewcommand{\listofalgorithms}{
-		\newpage
-		\phantomsection \label{listofalgorithms}
-		\addcontentsline{toc}{chapter\label{listofalgorithms}}{\listalgorithmname}
-	
-	    \if@twocolumn
-	      \@restonecoltrue\onecolumn
-	    \else
-	      \@restonecolfalse
-	    \fi
-	    \originalListofalgorithms
-	    \if@restonecol\twocolumn\fi
-	    
-	    \cleardoublepage
-	}	
-	
-	\newcommand{\thesisacronyms}[1]{
-		\newpage
-		\phantomsection \label{listacronymname}
-		\addcontentsline{toc}{chapter\label{listacronymname}}{\listacronymname}
-		\newpage
-		
-		\section*{\titulos\listacronymname}
-			\vspace{0.5cm}
-			#1
-		\cleardoublepage
-	}
-	
-	\newcommand{\thesisglossary}[1]{
-		\newpage
-		\phantomsection \label{glossary}
-		\addcontentsline{toc}{chapter\label{glossary}}{\glossaryname}	
-		\section*{\titulos\glossaryname}
+%%Agradecimentos
+\newcommand{\thesisthanks}[1]{
+	\newpage
+	\phantomsection \label{thanks}
+	\addcontentsline{toc}{chapter\label{thanks}}{\thanksname}
+	\section*{\titulos\thanksname}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+%Dedicatória
+\newcommand{\thesisdedication}[1]{
+	\newpage
+	\phantomsection \label{dedication}
+	\addcontentsline{toc}{chapter\label{dedication}}{\dedicationname}
+	\section*{\titulos\dedicationname}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+	%\newpage
+	%\mbox{}
+	%\vfil
+	%\begin{center}
+	%Dedicated to...
+	%\end{center}
+	%\vfil
+	%\eject
+	%\cleardoublepage
+}
+
+%Prefácio
+\newcommand{\thesisforewords}[1]{
+	\newpage
+	\phantomsection \label{preface}
+	\addcontentsline{toc}{chapter\label{preface}}{\prefacename}
+	\section*{\titulos\prefacename}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+%Primeiro parametro é o resumo e o segundo as palavras chaves (em português)
+\newcommand{\thesisresumo}[2]{
+	\newpage
+	\phantomsection \label{resumo}
+	\addcontentsline{toc}{chapter\label{resumo}}{Resumo}
+	\section*{\titulos{Resumo}}
+	\vspace{0.5cm}
+	#1
+	\vspace{2.2cm}
+
+	{\titulos{Palavras-chave}}
+
+	\vspace{0.8cm}
+	#2
+	\cleardoublepage
+}
+
+% Resumo alargado em português (somente para teses escritas em inglês)
+\newcommand{\thesisresumoalargado}[1]{
+	\newpage
+	\phantomsection \label{resumo-alargado}
+	\addcontentsline{toc}{chapter\label{resumo-alargado}}{Resumo alargado}
+	\section*{\titulos{Resumo alargado}}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+%Primeiro parametro é o abstract e o segundo as keywords (em inglês)
+\newcommand{\thesisabstract}[2]{
+	%abstract+keywords
+	\newpage
+	\phantomsection \label{abstract}
+	\addcontentsline{toc}{chapter\label{abstract}}{Abstract}
+	\section*{\titulos{Abstract}}
+	\vspace{0.5cm}
+	#1
+
+	\vspace{2.2cm}
+	{\titulos{Keywords}}
+
+	\vspace{0.8cm}
+	#2
+	\cleardoublepage
+}
+
+
+%Bibliografia: O primeiro parâmetro é o estilo e o segundo é o ficheiro bib
+\newcommand{\thesisbibliography}[2]{
+	\cleardoublepage
+	\phantomsection \label{bibliography}
+	\addcontentsline{toc}{chapter\label{bibliography}}{\bibname}
+
+	\bibliographystyle{#1}
+	\bibliography{#2}
+}
+
+\patchcmd{\thebibliography}{\chapter*}{\section*}{}
+
+%https://en.wikibooks.org/wiki/TeX/let
+\let\originalListofalgorithms\listofalgorithms
+\renewcommand{\listofalgorithms}{
+	\newpage
+	\phantomsection \label{listofalgorithms}
+	\addcontentsline{toc}{chapter\label{listofalgorithms}}{\listalgorithmname}
+
+	\if@twocolumn
+	  \@restonecoltrue\onecolumn
+	\else
+	  \@restonecolfalse
+	\fi
+	\originalListofalgorithms
+	\if@restonecol\twocolumn\fi
+
+	\cleardoublepage
+}
+
+\newcommand{\thesisacronyms}[1]{
+	\newpage
+	\phantomsection \label{listacronymname}
+	\addcontentsline{toc}{chapter\label{listacronymname}}{\listacronymname}
+	\newpage
+
+	\section*{\titulos\listacronymname}
 		\vspace{0.5cm}
-			\noindent
-			#1
-		\cleardoublepage
-	}
+		#1
+	\cleardoublepage
+}
+
+\newcommand{\thesisglossary}[1]{
+	\newpage
+	\phantomsection \label{glossary}
+	\addcontentsline{toc}{chapter\label{glossary}}{\glossaryname}
+	\section*{\titulos\glossaryname}
+	\vspace{0.5cm}
+		\noindent
+		#1
+	\cleardoublepage
+}
 %End of new commands by Manoel Campos da Silva Filho ---------------------------------------------
 
 %%Links do pdf
@@ -366,7 +373,7 @@
 
 
 %% O código seguinte será incluído no pdf gerado http://www.tug.org/applications/hyperref/manual.html
-%%Visto nas propriedades do documento
+%% Visto nas propriedades do documento
 % \hypersetup
 % {
 % bookmarksopen=true,
@@ -384,11 +391,13 @@
 % urlcolor=linkcol 		%Cor das hiperligações
 % }
 
-
 %%Definições variadas
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
-
+% numerar \paragraph
+%\setcounter{secnumdepth}{5}
+% incluir \paragraph no indice
+% \setcounter{tocdepth}{5}
 
 %%Comandos e atalhos para algumas funções matemáticas
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
@@ -400,13 +409,13 @@
 
 %%Para rotação de figuras e tabelas http://www.ctan.org/tex-archive/macros/latex/contrib/rotating
 \usepackage{rotating}  
-	
+
 %%Cabeçalho e rodapé http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr
 \usepackage{fancyhdr}                   						%Fancy Header and Footer
 \pagestyle{fancy}                      							%Cabeçalho e rodapé estilo fancy
 \fancyfoot{}                            						%Apaga rodapé actual
 \fancyhead{}										%Apaga cabeçalho actual
-\fancyfoot[LE,RO]{\thepage}   								%Número de paginas no exterior L=left, E=even, R=right, O=Odd
+\fancyfoot[CE,CO]{\thepage}   								%Número de paginas no exterior C=center, L=left, E=even, R=right, O=Odd
 \newcommand{\cabecalho}[1]{\fancyhead[RE,LO]{\bfseries{#1}}}				%Nome da tese no cabeçalho
 \let\headruleORIG\headrule
 \renewcommand{\headrule}{\color{black} \headruleORIG}
@@ -414,26 +423,27 @@
 
 
 %Formatação dos tipos de letra
-\newcommand{\capitulos}{\fontsize{22pt}{10pt}\bfseries\selectfont}			%Capítulo: 22pt, negrito
-\newcommand{\titulos}{\fontsize{18pt}{10pt}\bfseries\selectfont}			%Titulos: 18pt, negrito
-\newcommand{\seccao}{\fontsize{14pt}{20pt}\bfseries\selectfont}				%Secção: 14pt, negrito
-\newcommand{\subseccao}{\fontsize{12pt}{14pt}\selectfont}				%subsecção: 12pt, normal
-\renewcommand{\footnotesize}{\fontsize{9pt}{12pt}\selectfont}				%Nota rodapé: 9pt, espacamento 1 linha
+\newcommand{\capitulos}{\fontsize{18pt}{11pt}\bfseries\selectfont} % Capítulo: 18pt, negrito
+\newcommand{\titulos}{\fontsize{18pt}{11pt}\bfseries\selectfont}   % Titulos: 18pt, negrito
+\newcommand{\seccao}{\fontsize{14pt}{20pt}\bfseries\selectfont}	   % Secção: 14pt, negrito
+\newcommand{\subseccao}{\fontsize{12pt}{14pt}\bfseries\selectfont} % Subsecção: 12pt, normal
+\renewcommand{\footnotesize}{\fontsize{9pt}{12pt}\selectfont}	   % Nota rodapé: 9pt, espacamento 1 linha
 \renewcommand{\Huge}{\titulos}
 
 
 %Folha de rosto
-\newcommand{\rostoubi}{\fontsize{14pt}{14pt}\selectfont}				%Texto a dizer UBI 14pt, normal
-\newcommand{\rostotitulo}{\fontsize{18pt}{18pt}\selectfont}				%Titulo da tese: 18pt, (+negrito)
-\newcommand{\rostosubtit}{\fontsize{16pt}{16pt}\selectfont}				%Titulo da tese: 16pt, (+negrito)
-\newcommand{\rostonomes}{\fontsize{14pt}{14pt}\selectfont}				%Nome autor, curso: 14pt, (+negrito)
-\newcommand{\rostooutros}{\fontsize{12pt}{12pt}\selectfont}				%Local e data: 12pt, (+negrito)
-\newcommand{\rostofac}{\fontsize{12.5pt}{12.5pt}\selectfont}				%Faculdade: 12.5pt
+\newcommand{\rostoubi}{\fontsize{14pt}{14pt}\selectfont}	% Texto a dizer UBI 14pt, normal
+\newcommand{\rostotitulo}{\fontsize{18pt}{18pt}\selectfont} % Titulo da tese: 18pt, (+negrito)
+\newcommand{\rostosubtit}{\fontsize{16pt}{16pt}\selectfont} % Titulo da tese: 16pt, (+negrito)
+\newcommand{\rostonomes}{\fontsize{14pt}{14pt}\selectfont}	% Nome autor, curso: 14pt, (+negrito)
+\newcommand{\rostooutros}{\fontsize{11pt}{11pt}\selectfont} % Local e data: 12pt, (+negrito) {I have change this one from 12 to 11}
+\newcommand{\rostonomesdeorientor}{\fontsize{12pt}{12pt}\selectfont} % A new one for the supervisor's name
+\newcommand{\rostofac}{\fontsize{12.5pt}{12.5pt}\selectfont}	% Faculdade: 12.5pt
 
 
-%linhas das tabelas e afins
-\usepackage{colortbl}									%Adicionar cor às tabelas  http://www.ctan.org/tex-archive/macros/latex/contrib/colortbl/
-\arrayrulecolor{black}									%Preto
+%Linhas das tabelas e afins
+\usepackage{colortbl}	% Adicionar cor às tabelas  http://www.ctan.org/tex-archive/macros/latex/contrib/colortbl/
+\arrayrulecolor{black}
 
 %Estilo plain modificado
 \fancypagestyle{plain}{
@@ -447,56 +457,52 @@
 \makeatletter
 
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
-  \hbox{}%
-  \thispagestyle{plain}%              							%Páginas em branco usam estilo plain
-  \newpage%
+  \hbox{}
+  \thispagestyle{plain}              							% Páginas em branco usam estilo plain
+  \newpage
   \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
 \makeatother
 
-
 %%Tabela com 9pt
-%\makeatletter										%O código comentado apresentado apresenta problemas
-%\renewenvironment{table}{%								%Procurar no forum http://latex-community.org, tópico "Equation Numbering and Table Font Size''
+%\makeatletter										% O código comentado apresentado apresenta problemas
+%\renewenvironment{table}{%							% Procurar no forum http://latex-community.org, tópico "Equation Numbering and Table Font Size''
   %\@float{table}\footnotesize}
   %{\end@float}
 %\makeatother
-\usepackage{etoolbox}									%Para modificar o tamanho de letra na tabela http://ctan.org/pkg/etoolbox
-\AtBeginEnvironment{tabular}{\footnotesize}						%Procurar no forum http://latex-community.org, tópico "Equation Numbering and Table Font Size''
-
+\usepackage{etoolbox}									% Para modificar o tamanho de letra na tabela http://ctan.org/pkg/etoolbox
+\AtBeginEnvironment{tabular}{\footnotesize}				% Procurar no forum http://latex-community.org, tópico "Equation Numbering and Table Font Size''
 
 %%Número de equação centrado com equação
-\makeatletter										%Explicação  http://tex.stackexchange.com/questions/8351/what-do-makeatletter-and-makeatother-do
-\def\place@tag{\quad\boxz@}								%Comentar esta linha para alinhar número da equação à direita
+\makeatletter										% Explicação  http://tex.stackexchange.com/questions/8351/what-do-makeatletter-and-makeatother-do
+\def\place@tag{\quad\boxz@}							% Comentar esta linha para alinhar número da equação à direita
 \makeatother
 \let\equation\align
 \let\endequation\endalign
- 
 
 %%Código herdado
 \newenvironment{maxime}[1]
 {
-\vspace*{0cm}
-\hfill
-\begin{minipage}{0.5\textwidth}%
-%\rule[0.5ex]{\textwidth}{0.1mm}\\%
-\hrulefill $\:$ {\bf #1}\\
-%\vspace*{-0.25cm}
-\it 
-}%
-{%
-
-\hrulefill
-\vspace*{0.5cm}%
-\end{minipage}
+	\vspace*{0cm}
+	\hfill
+	\begin{minipage}{0.5\textwidth}
+	%\rule[0.5ex]{\textwidth}{0.1mm}\\%
+	\hrulefill $\:$ {\bf #1}\\
+	%\vspace*{-0.25cm}
+	\it
+	}
+	{
+	\hrulefill
+	\vspace*{0.5cm}%
+	\end{minipage}
 }
 
-%mninitoc
+%minitoc
 %\let\minitocORIG\minitoc
 %\renewcommand{\minitoc}{\minitocORIG \vspace{1.5em}}
 
-\usepackage{multirow}					%Create tab­u­lar cells http://www.ctan.org/tex-archive/macros/latex/contrib/multirow
-% \usepackage{slashbox}					%Pro­duce tab­u­lar cells with di­ag­o­nal lines in them http://www.ctan.org/pkg/slashbox
+\usepackage{multirow}					% Create tabular cells http://www.ctan.org/tex-archive/macros/latex/contrib/multirow
+% \usepackage{slashbox}					% Produce tabular cells with diagonal lines in them http://www.ctan.org/pkg/slashbox
 
 \newenvironment{bulletList}				%http://en.wikibooks.org/wiki/LaTeX/List_Structures
 { \begin{list}%
@@ -506,18 +512,18 @@
 	 \setlength{\itemsep}{\parsep}}}%
 { \end{list} }
 
-\newtheorem{definition}{Définition}
+\newtheorem{definition}{Definition}
 \renewcommand{\epsilon}{\varepsilon}
 
-% centered page environment
 
+% Centered page environment
 \newenvironment{vcenterpage}
 %{\newpage\vspace*{\fill}\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
 {\newpage\vspace*{\fill}\renewcommand{\headrulewidth}{0pt}}
 {\vspace*{\fill}\par\pagebreak}
 
-\usepackage{setspace}					%Pro­vides sup­port for set­ting the spac­ing be­tween lines http://www.ctan.org/tex-archive/macros/latex/contrib/setspace
-\usepackage{tabularx}					%The pack­age de­fines an en­vi­ron­ment tab­u­larx, an ex­ten­sion of tab­u­lar  http://www.ctan.org/pkg/tabularx
+\usepackage{setspace}					%Provides support for setting the spacing between lines http://www.ctan.org/tex-archive/macros/latex/contrib/setspace
+\usepackage{tabularx}					%The package defines an environment tabularx, an extension of tabular  http://www.ctan.org/pkg/tabularx
 \usepackage{makeidx}					%Index processor  http://www.ctan.org/tex-archive/indexing/makeindex
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
@@ -525,4 +531,29 @@
 %\AfterEndPreamble{
 	\include{template/PaginaRosto}
 }
+
+%% Inicio do bloco
+%% Descomentando este bloco de comandos as  palavras "Figura" e "Tabelas" vão aparecer por extenso nas respectivas Listas
+%%
+%% Comentado aparece:
+%%Lista de Figuras
+%%		2.1 Circuito básico com uma fonte de tensão contínua (V) e uma resistência atraves-
+%%			sada por uma corrente I. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .3
+%%
+%% Descomentando aparece
+%% 		Figura 2.1 Circuito básico com uma fonte de tensão contínua (V) e uma resistência
+%%      atravessada por uma corrente I. . . . . . . . . . . . . . . . . . . . . .3
+%%
+%\usepackage[titles]{tocloft}
+%\newlength{\mylen}
+%
+%\renewcommand{\cftfigpresnum}{\figurename\enspace}
+%\renewcommand{\cftfigaftersnum}{ }
+%\settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
+%\addtolength{\cftfignumwidth}{\mylen}
+%
+%\renewcommand{\cfttabpresnum}{\tablename\enspace}
+%\renewcommand{\cfttabaftersnum}{ }
+%\settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
+%\addtolength{\cfttabnumwidth}{\mylen}
 

@@ -25,46 +25,36 @@ urlcolor=linkcol   %Cor das hiperligações
 %Início-----------------------
 
 \begin{titlepage}
-\begin{center}
+    \begin{center}
+        \begin{flushright}
+            \vspace*{0.03cm}\includegraphics[height=3cm]{logo_ubi_vprincipal}\\
+            %\rostoubi UNIVERSIDADE DA BEIRA INTERIOR\\
+            %\rostofac \facultynamestr\\
+            \vspace{5.6cm}%7.6/6.6 - 1
 
-\begin{flushleft}
-\includegraphics[height=2.22cm]{logo}\\
-\rostoubi UNIVERSIDADE DA BEIRA INTERIOR\\
-\rostofac \facultynamestr\\
-\end{flushleft}
+            \rostotitulo \textbf{\thesistitlestr} \\
+            \ifdefined\thesissubtitlestr
+                \rostosubtit \textbf{\thesissubtitlestr}\\
+            \fi
+            \vspace{1.6cm}%1.8
+            \rostonomes \textbf{\thesisauthorsstr} \\
+            \vspace{1.4cm}%1.4
+            % \rostooutros Tese para obtenção do Grau de Doutor em\\
+            \rostooutros \thesistypestr \\
+            \rostonomes \textbf{\thesiscoursestr}\\
+            \rostooutros (\studiescyclenumberstr \ \studiescycle)\\
+            \vspace{3.3cm}%3.2
+            %\rostooutros \thesissupervisorsstr
 
-%\vspace{6.5cm} %7.6
-\vspace{5cm} %7.6
+            %\rostonomesdeorientor Orientador: Name of your supervisor\\
+            \thesissupervisorsstr
+            %Co-orientador: Prof. Doutor Nome Completo\\
+            \vspace{1.4cm}
 
-\rostotitulo \textbf{\thesistitlestr} \\
-\ifdefined\thesissubtitlestr
-    \rostosubtit \textbf{\thesissubtitlestr}\\
-\fi
-
-%\vspace{1.8cm}
-\vspace{1.4cm}
-
-\rostonomes \textbf{\thesisauthorsstr} \\ \candidate\\
-
-%\vspace{1.4cm}
-\vspace{1cm}
-
-\rostooutros \thesistypestr \\
-\rostonomes \textbf{\thesiscoursestr}\\
-\rostooutros (\studiescyclenumberstr \ \studiescycle)\\
-
-%\vspace{3.3cm}
-\vspace{1.5cm}
-
-%\rostooutros \thesissupervisorsstr
-\thesissupervisorsstr
-
-%\vspace{1.4cm}
-\vspace{1cm}
-
-\rostooutros \textbf{\thesislocalanddatestr}
-
-\end{center}
+            %\rostooutros
+            \rostooutros \textbf{\thesislocalanddatestr}
+        \end{flushright}
+    \end{center}
 \end{titlepage}
 
 %Fim------------------

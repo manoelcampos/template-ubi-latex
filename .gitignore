@@ -28,6 +28,7 @@ Thesis.pdf
 *.loa
 *.lof
 *.lot
+*.synctex(busy)
 
 # Projeto IntelliJ IDEA
 .idea/
