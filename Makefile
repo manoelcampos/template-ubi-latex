@@ -5,3 +5,7 @@ all:
 
 clean:
 	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -f *.$(ext); rm -f template/*.$(ext);)
+
+install:
+	# # Instala pacote de fontes (incluindo Trebuchet e Georgia)
+	sudo apt-get install ttf-mscorefonts-installer
