@@ -52,8 +52,9 @@
 %%   Right bracket \]     Circumflex    \^     Underscore    \_
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
+
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{template/estiloUBI}[2016/06/14 v3.0 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesClass{template/estiloUBI}[2021/05/30 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 \usepackage{ifxetex}
 \ifxetex
@@ -70,22 +71,22 @@
 
 \if@compatibility\else
 \DeclareOption{a4paper}
-   {\setlength\paperheight {297mm}%
+   {\setlength\paperheight {297mm}
     \setlength\paperwidth  {210mm}}
 \DeclareOption{a5paper}
-   {\setlength\paperheight {210mm}%
+   {\setlength\paperheight {210mm}
     \setlength\paperwidth  {148mm}}
 \DeclareOption{b5paper}
-   {\setlength\paperheight {250mm}%
+   {\setlength\paperheight {250mm}
     \setlength\paperwidth  {176mm}}
 \DeclareOption{letterpaper}
-   {\setlength\paperheight {11in}%
+   {\setlength\paperheight {11in}
     \setlength\paperwidth  {8.5in}}
 \DeclareOption{legalpaper}
-   {\setlength\paperheight {14in}%
+   {\setlength\paperheight {14in}
     \setlength\paperwidth  {8.5in}}
 \DeclareOption{executivepaper}
-   {\setlength\paperheight {10.5in}%
+   {\setlength\paperheight {10.5in}
     \setlength\paperwidth  {7.25in}}
 \DeclareOption{landscape}
    {\setlength\@tempdima   {\paperheight}%
@@ -133,15 +134,16 @@
 \DeclareOption{twocolumn}{\@twocolumntrue}
 \DeclareOption{leqno}{\input{leqno.clo}}
 \DeclareOption{fleqn}{\input{fleqn.clo}}
-\DeclareOption{openbib}{%
-  \AtEndOfPackage{%
-   \renewcommand\@openbib@code{%
+
+\DeclareOption{openbib}{
+  \AtEndOfPackage{
+   \renewcommand\@openbib@code{
       \advance\leftmargin\bibindent
       \itemindent -\bibindent
       \listparindent \itemindent
       \parsep \z@
-      }%
-   \renewcommand\newblock{\par}}%
+      }
+   \renewcommand\newblock{\par}}
 }
 
 \ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
@@ -599,7 +601,7 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
-      
+
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
 \newenvironment{theindex}
