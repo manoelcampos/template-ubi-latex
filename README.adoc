@@ -89,7 +89,7 @@ Existem distribuições disponíveis para os sistemas operativos mais conhecidos
 como será visto a seguir.
 
 O compilador a ser utilizado, disponível após a instalação da distribuição LaTeX, é o _XeLaTeX_.
-O _XeLaTeX_ é requerido (no lugar de outros compiladores como _PDFLaTeX_) devido a versão atual do modelo utilizar o tipo de letra _Trebuchet_.
+O _XeLaTeX_ é requerido (no lugar de outros compiladores como _PDFLaTeX_) devido a versão atual do modelo utilizar o tipo de letra _Georgia_.
 Ademais, para utilizar o _XeLaTeX_ a codificação dos ficheiros tex tem que ser em UTF-8. 
 
 As sub-secções a seguir apresentam detalhes de instalação dos pré-requisitos para cada um dos sistemas operativos em que o modelo foi testado.
@@ -113,13 +113,13 @@ de gerenciadores de pacotes, a serem executados a partir de um terminal, para di
 * ArchLinux e derivados (como ArchBang): `sudo pacman install texlive-full`
 
 Os utilizadores de sistema Linux baseados em Debian (como Ubuntu e Linux Mint)
-têm que instalar também o pacote "ttf-mscorefonts-installer" para utilizar o tipo de letra _Trebuchet_.
+têm que instalar também o pacote "ttf-mscorefonts-installer" para utilizar o tipo de letra _Georgia_.
 Não foram realizados testes em outras distribuições Linux.
 
 ==== Utilizadores de Mac OSX
 
 Em sistemas Mac OSX deve ser instalada a distribuição LaTeX denominada https://tug.org/mactex/[MacTeX].
-Adicionalmente deve ser instalada a letra _Trebuchet_, cujas instruções estão disponíveis em
+Adicionalmente deve ser instalada a letra _Georgia_, cujas instruções estão disponíveis em
 http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
 
 === Tese de exemplo
