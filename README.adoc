@@ -187,16 +187,6 @@ A seguir é listado o conteúdo de tal directório.
  Os ficheiros .bst adicionais são alguns modelos bibliográficos disponibilizados
  por algumas editoras de artigos científicos.
 
-== Testes realizados
-
-O modelo foi compilado em _XeLaTeX_ sem erros em alguns sistemas operativos, como listado a seguir:
-
-* Windows 7 Profissional 32-bit com a distribuição LaTeX basic-MikTeX 2.9.5105 32-bit e editor TeXnicCenter 2.02 Stable 32-bit.
-* Windows 7 Profissional 64-bit com a distribuição LaTeX basic-MikTeX 2.9.5105 64-bit e editor TeXnicCenter 2.02 Stable 64-bit.
-* Linux Mint 16 Cinnamon 64-bit e Linux Mint 16 KDE 64-bit com a distribuição LaTeX texlive-full e editor Texmaker 4.0.3 ou Gummi 0.6.5.
-* Mac OSX Yosemite 64 bits com a distribuição MacTex 2014 e 2015 e editor TeXstudio 2.9
-* Mac OSX El Captain 64 bits com a distribuição MacTex 2015 e editor TeXstudio 2.10.8
-
 == Licença
 
 * O projeto é protegido pela link:LICENSE[Licença GPLv3].
