@@ -19,7 +19,9 @@ endif::[]
 
 = {description} image:https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml/badge.svg[link=https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml] image:https://img.shields.io/badge/license-GPL%20v3-orange.svg[license,link=http://www.gnu.org/licenses/gpl-3.0.en.html]
 
+pass:[<p align="center">]
 image:images/capa-tese-exemplo.png[link={pdf_link}]
+pass:[</p>]
 
 == Introdução
 O presente projeto é uma versão *NÃO OFICIAL* do modelo em LaTeX de teses e dissertações da http://www.ubi.pt[Universidade da Beira Interior (UBI)] de acordo com o despacho reitoral nº 2019/R/630.
@@ -63,6 +65,30 @@ que conta com os seguintes recursos e características:
 
 Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
 do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
+
+== Tese de Exemplo
+
+Juntamente com o modelo é disponibilizado um exemplo de tese, a partir do qual
+o utilizador pode editar e escrever sua própria tese.
+Uma versão compilada para PDF está disponível para visualização link:{pdf_link}[aqui].
+
+E o mais legal é que ao fazer um push, seu documento é compilado e o PDF atualizado automaticamente. Desta forma, basta passar o link acima para o(a) orientador(a) que ele(a) sempre terá a versão mais atual da tese. E se você quiser saber de qual versão do documento foi gerado o PDF, basta olhar o último commit no branch `gh-pages`.
+
+Os ficheiros desta tese de exemplo são listados a seguir.
+
+* *Thesis.tex*: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
+* *Introduction.tex* e _exemplos.tex_: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
+* *Acronyms.tex*: ficheiro onde deves incluir os acrônimos que estejas a utilizar na tese, para que apareçam na lista de acrônimos;
+* *Appendix.tex*: um exemplo de conteúdo para ir como anexos da tese;
+* *Glossary.tex*: lista de termos que desejas descrever o significado, e assim compor o glossário da tese;
+* *bibliography.bib*: ficheiro em formato http://www.bibtex.org[BibTeX]
+onde se inserem as referências bibliográficas a serem utilizadas na tese.
+O estilo bibliográfico utilizado é definido pelo modelo, mas pode ser alterado facilmente.
+Para isto, consulte a secção "Ficheiros do modelo" abaixo;
+* *images*: directório onde por defeito deverão ser colocadas as imagens a utilizar.
+
+IMPORTANT: Ao usar o template, você precisa apenas alterar o link do PDF para apontar pro seu repositório,
+editando este arquivo e alterando o atributo `:pdf_link` no topo dele.
 
 == Como utilizar o modelo para escrever sua tese
 
@@ -120,25 +146,6 @@ Não foram realizados testes em outras distribuições Linux.
 Em sistemas Mac OSX deve ser instalada a distribuição LaTeX denominada https://tug.org/mactex/[MacTeX].
 Adicionalmente deve ser instalada a letra _Georgia_, cujas instruções estão disponíveis em
 http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
-
-=== Tese de exemplo
-
-Juntamente com o modelo é disponibilizado um exemplo de tese, a partir do qual
-o utilizador pode editar e escrever sua própria tese.
-Uma versão compilada para PDF está disponível para visualização no ficheiro link:{pdf_link}[Thesis.pdf].
-
-Os ficheiros desta tese de exemplo são listados a seguir.
-
-* *Thesis.tex*: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
-* *Introduction.tex* e _exemplos.tex_: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
-* *Acronimos.tex*: ficheiro onde deves incluir os acrônimos que estejas a utilizar na tese, para que apareçam na lista de acrônimos;
-* *Appendix.tex*: um exemplo de conteúdo para ir como anexos da tese;
-* *Glossary.tex*: lista de termos que desejas descrever o significado, e assim compor o glossário da tese;
-* *bibliography.bib*: ficheiro em formato http://www.bibtex.org[BibTeX]
- onde se inserem as referências bibliográficas a serem utilizadas na tese.
- O estilo bibliográfico utilizado é definido pelo modelo, mas pode ser alterado facilmente.
- Para isto, consulte a secção "Ficheiros do modelo" abaixo;
-* *images*: directório onde por defeito deverão ser colocadas as imagens a utilizar.
 
 === Como compilar a tese para PDF
 
