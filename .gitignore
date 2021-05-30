@@ -4,6 +4,7 @@ Thesis.pdf
 .DS_Store
 
 # Arquivos temporários tex
+out/
 *.dvi
 *.tdo
 *.idx
