@@ -22,8 +22,7 @@ endif::[]
 image:images/capa-tese-exemplo.png[link={pdf_link}]
 
 == Introdução
-O presente projeto é uma versão *NÃO OFICIAL* do modelo em LaTeX de teses e dissertações da http://www.ubi.pt[Universidade da Beira Interior (UBI)]
-de acordo com o despacho reitoral nº https://academicos.ubi.pt/online/pdfHandler.ashx?file=bv/legislacao/Despacho_49_R_2010.pdf[49/R/2010].
+O presente projeto é uma versão *NÃO OFICIAL* do modelo em LaTeX de teses e dissertações da http://www.ubi.pt[Universidade da Beira Interior (UBI)] de acordo com o despacho reitoral nº 2019/R/630.
 
 Esta é uma versão reestruturada do projeto original disponibilizado em http://www.e-projects.ubi.pt/latex/template.html[e-projects.ubi.pt]
 que conta com os seguintes recursos e características:
