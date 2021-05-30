@@ -1,4 +1,4 @@
-:pdf_link: https://github.com/manoelcampos/template-ubi-latex/blob/gh-pages/Tese.pdf
+:pdf_link: https://github.com/manoelcampos/template-ubi-latex/blob/gh-pages/Thesis.pdf
 
 :numbered:
 :icons: font
@@ -19,7 +19,7 @@ endif::[]
 
 = {description} image:https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml/badge.svg[link=https://github.com/manoelcampos/template-ubi-latex/actions/workflows/latexmk.yml] image:https://img.shields.io/badge/license-GPL%20v3-orange.svg[license,link=http://www.gnu.org/licenses/gpl-3.0.en.html]
 
-image:imagens/capa-tese-exemplo.png[link={pdf_link}]
+image:images/capa-tese-exemplo.png[link={pdf_link}]
 
 == Introdução
 O presente projeto é uma versão *NÃO OFICIAL* do modelo em LaTeX de teses e dissertações da http://www.ubi.pt[Universidade da Beira Interior (UBI)]
@@ -126,20 +126,20 @@ http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
 
 Juntamente com o modelo é disponibilizado um exemplo de tese, a partir do qual
 o utilizador pode editar e escrever sua própria tese.
-Uma versão compilada para PDF está disponível para visualização no ficheiro link:{pdf_link}[Tese.pdf].
+Uma versão compilada para PDF está disponível para visualização no ficheiro link:{pdf_link}[Thesis.pdf].
 
 Os ficheiros desta tese de exemplo são listados a seguir.
 
-* *Tese.tex*: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
-* *Intro.tex* e _exemplos.tex_: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
+* *Thesis.tex*: ficheiro principal do documento, a partir do qual compila-se o PDF da tese;
+* *Introduction.tex* e _exemplos.tex_: exemplos de capítulos com tabelas, figuras e referências bibliográficas;
 * *Acronimos.tex*: ficheiro onde deves incluir os acrônimos que estejas a utilizar na tese, para que apareçam na lista de acrônimos;
-* *Anexos.tex*: um exemplo de conteúdo para ir como anexos da tese;
-* *Glossario.tex*: lista de termos que desejas descrever o significado, e assim compor o glossário da tese;
-* *bibliografia.bib*: ficheiro em formato http://www.bibtex.org[BibTeX]
+* *Appendix.tex*: um exemplo de conteúdo para ir como anexos da tese;
+* *Glossary.tex*: lista de termos que desejas descrever o significado, e assim compor o glossário da tese;
+* *bibliography.bib*: ficheiro em formato http://www.bibtex.org[BibTeX]
  onde se inserem as referências bibliográficas a serem utilizadas na tese.
  O estilo bibliográfico utilizado é definido pelo modelo, mas pode ser alterado facilmente.
  Para isto, consulte a secção "Ficheiros do modelo" abaixo;
-* *imagens*: directório onde por defeito deverão ser colocadas as imagens a utilizar.
+* *images*: directório onde por defeito deverão ser colocadas as imagens a utilizar.
 
 === Como compilar a tese para PDF
 
@@ -159,10 +159,10 @@ por meio da linha de comando. Desta forma, tendo o programa _make_ instalado
 (que já vem instalado por defeito em sistemas Linux e Mac OSX),
 há os comandos abaixo disponíveis:
 
-* *make* compila a tese de exemplo (ficheiro Tese.tex) e se a compilação ocorrer com sucesso, cria o ficheiro Tese.pdf;
+* *make* compila a tese de exemplo (ficheiro Thesis.tex) e se a compilação ocorrer com sucesso, cria o ficheiro Thesis.pdf;
 * *make clean* apaga todos os ficheiros temporários criados no processo de compilação.
 
-Se tiveres começado a criar sua tese utilizando um ficheiro diferente do _Tese.tex_,
+Se tiveres começado a criar sua tese utilizando um ficheiro diferente do _Thesis.tex_,
 para compilar utilizando o comando _make_, é preciso editar o ficheiro link:Makefile[Makefile]
 e informar o nome do ficheiro tex principal da sua tese na primeira linha do _Makefile_.
 
@@ -177,7 +177,7 @@ A seguir é listado o conteúdo de tal directório.
 * *estilo-biblio.bst*: define o estilo da bibliografia, que pode ser trocado por qualquer
  outro ficheiro de acordo com a norma a utilizar (deixada em aberto pelo despacho).
  Se incluíres um novo ficheiro de estilo bibliográfico, o nome deste ficheiro
- deve ser informado no comando _\thesisbibliography_ dentro do ficheiro _Tese.tex_.
+ deve ser informado no comando _\thesisbibliography_ dentro do ficheiro _Thesis.tex_.
  Os ficheiros .bst adicionais são alguns modelos bibliográficos disponibilizados
  por algumas editoras de artigos científicos.
 
