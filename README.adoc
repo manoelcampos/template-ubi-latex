@@ -179,7 +179,7 @@ A seguir é listado o conteúdo de tal directório.
 
 * *estiloUBI.cls*: ficheiro principal que define o estilo de modelo de tese da UBI;
 * *formatacaoUBI.sty*: define detalhes da formatação do modelo;
-* *estilo-biblio.bst*: define o estilo da bibliografia, que pode ser trocado por qualquer
+* *BiblioStyle.bst*: define o estilo da bibliografia, que pode ser trocado por qualquer
  outro ficheiro de acordo com a norma a utilizar (deixada em aberto pelo despacho).
  Se incluíres um novo ficheiro de estilo bibliográfico, o nome deste ficheiro
  deve ser informado no comando _\thesisbibliography_ dentro do ficheiro _Thesis.tex_.
