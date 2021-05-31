@@ -174,7 +174,7 @@ e informar o nome do ficheiro tex principal da sua tese na primeira linha do _Ma
 
 == Ficheiros específicos do modelo
 
-Os ficheiros específicos do modelo podem ser acedidos a partir do directório link:template[template].
+Os ficheiros específicos do modelo podem ser acedidos a partir do directório link:template-ubi[template-ubi].
 No entanto, ao menos que tenhas certeza do que estás a fazer, não edite tais ficheiros.
 A seguir é listado o conteúdo de tal directório.
 

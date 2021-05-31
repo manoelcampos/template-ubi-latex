@@ -20,7 +20,7 @@
 %     Tal ficheiro agora é importado diretamente pelo template
 %     (dentro do estiloUBI.cls). Desta forma, o utilizador
 %     só precisa usar a classe estiloUBI na primeira linha do seu documento principal (normalmente Thesis.tex),
-%     como indicado no seguinte exemplo: \documentclass[10pt,twoside]{template/estiloUBI}
+%     como indicado no seguinte exemplo: \documentclass[10pt,twoside]{template-ubi/estiloUBI}
 % 	- Criação dos seguintes comandos para definir informações da tese:
 %	  	\thesisauthors       : nome do autor
 %	  	\thesistitle         : título da tese
@@ -39,8 +39,8 @@
 %	  	\facultyname         : nome da faculdade
 %     	\studiescyclenumber  : número do ciclo de estudos (1º, 2º ou 3º).
 %     	\thesisbibliography  : estilo bibliográfico e arquivo de bibliografia. 
-%			Exemplo - \thesisbibliography{template/estilo-biblio}{bibliografia}
-%                     define o estilo bibliográfico template/estilo-biblio.bst
+%			Exemplo - \thesisbibliography{template-ubi/estilo-biblio}{bibliografia}
+%                     define o estilo bibliográfico template-ubi/estilo-biblio.bst
 %                     para o arquivo bibliography.bib
 %     Com os novos comandos, a formatação padrão do template não é misturada com o texto do documento
 %     do utilizador, reduzindo a probabilidade deste alterar o template indevidamente (mesmo que sem querer).
@@ -90,7 +90,7 @@
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{template/formatacaoUBI}[2016/06/14 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesPackage{template-ubi/formatacaoUBI}[2016/06/14 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
 \usepackage{acronym,gensymb,booktabs,verbatimbox,float}
@@ -529,7 +529,7 @@
 
 \AtBeginDocument{%
 %\AfterEndPreamble{
-	\include{template/PaginaRosto}
+	\include{template-ubi/PaginaRosto}
 }
 
 %% Inicio do bloco

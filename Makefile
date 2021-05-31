@@ -4,7 +4,7 @@ all:
 	latexmk -r .latexmkrc -quiet -pdf -file-line-error -halt-on-error -interaction=nonstopmode "$(FILE).tex"
 
 clean:
-	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -f *.$(ext); rm -f template/*.$(ext);)
+	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -f *.$(ext); rm -f template-ubi/*.$(ext);)
 	rm -rf out/
 
 install:

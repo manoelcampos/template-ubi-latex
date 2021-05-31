@@ -54,7 +54,7 @@
 %%   Right brace   \}     Tilde         \~}
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{template/estiloUBI}[2021/05/30 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesClass{template-ubi/estiloUBI}[2021/05/30 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 \usepackage{ifxetex}
 \ifxetex
@@ -620,7 +620,7 @@
                 \let\item\@idxitem}
                {\if@restonecol\onecolumn\else\clearpage\fi}
 
-\usepackage{template/formatacaoUBI}
+\usepackage{template-ubi/formatacaoUBI}
 
 \newcommand\appendix[1]{
   \par
