@@ -177,7 +177,7 @@ Os ficheiros específicos do modelo podem ser acedidos a partir do directório l
 No entanto, ao menos que tenhas certeza do que estás a fazer, não edite tais ficheiros.
 A seguir é listado o conteúdo de tal directório.
 
-* *estiloUBI.cls*: ficheiro principal que define o estilo de modelo de tese da UBI;
+* *Styling.cls*: ficheiro principal que define o estilo de modelo de tese da UBI;
 * *Formatting.sty*: define detalhes da formatação do modelo;
 * *BiblioStyle.bst*: define o estilo da bibliografia, que pode ser trocado por qualquer
  outro ficheiro de acordo com a norma a utilizar (deixada em aberto pelo despacho).
