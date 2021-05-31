@@ -581,7 +581,7 @@
 \fi
 
 % O novo ambiente "thebibliography" precisa ser criado antes
-% de incluir o formatacaoUBI para definir o formato de elementos como a secção bibliografia.
+% de incluir o Formatting para definir o formato de elementos como a secção bibliografia.
 \newenvironment{thebibliography}[1]
      {\chapter*{\bibname}%
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
@@ -620,7 +620,7 @@
                 \let\item\@idxitem}
                {\if@restonecol\onecolumn\else\clearpage\fi}
 
-\usepackage{template-ubi/formatacaoUBI}
+\usepackage{template-ubi/Formatting}
 
 \newcommand\appendix[1]{
   \par
