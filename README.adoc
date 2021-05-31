@@ -126,8 +126,7 @@ Em sistemas Windows deve ser instalada a distribuição LaTeX denominada http://
 ==== Utilizadores de Linux
 
 Em sistemas Linux deve ser instalada a distribuição LaTeX denominada _texlive-full_.
-A instalação pode ser feita por meio de ferramentas gráficas como a "Central de Software" disponível em sistemas
-como Ubuntu, ou por meio do terminal utilizando um gerenciador de pacotes.
+A instalação pode ser feita por meio de ferramentas gráficas como a "Central de Software" disponível em sistemas como Ubuntu, ou por meio do terminal utilizando um gerenciador de pacotes.
 
 Diferentes distribuições Linux possuem seus próprios gerenciadores de pacote e cada utilizador deve verificar qual
 é o disponível para seu sistema. No entanto, a seguir são mostrados alguns exemplos
