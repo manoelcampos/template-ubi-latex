@@ -146,6 +146,15 @@ Em sistemas Mac OSX deve ser instalada a distribuição LaTeX denominada https:/
 Adicionalmente deve ser instalada a letra _Georgia_, cujas instruções estão disponíveis em
 http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
 
+Adicionalmente, é necessário o pacote `ghostscript` para poder utilizar imagens `.eps`.
+Se você tiver o gerenciador de pacotes https://brew.sh[Homebrew], pode instalar com o comando abaixo:
+
+[source,bash]
+----
+brew install ghostscript
+ln -sf $(brew --prefix ghostscript)/bin/gs /usr/local/bin/gs
+----
+
 === Como compilar a tese para PDF
 
 Para compilar a tese de exemplo para um ficheiro PDF, pode-se definir nas configurações do seu editor LaTeX

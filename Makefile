@@ -7,7 +7,12 @@ clean:
 	$(foreach ext,$(TEMP_FILE_EXTENSIONS),rm -f *.$(ext); rm -f template-ubi/*.$(ext);)
 	rm -rf out/
 
-install:
+linux:
 	sudo apt-get install texlive-full
 	# Instala pacote de fontes (incluindo Trebuchet e Georgia)
 	sudo apt-get install ttf-mscorefonts-installer
+
+macos:
+	# Exigido para usar imagens eps no XeLaTeX
+	brew install ghostscript
+	ln -sf $(brew --prefix ghostscript)/bin/gs /usr/local/bin/gs
