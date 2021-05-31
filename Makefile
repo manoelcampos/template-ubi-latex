@@ -8,5 +8,6 @@ clean:
 	rm -rf out/
 
 install:
-	# # Instala pacote de fontes (incluindo Trebuchet e Georgia)
+    sudo apt-get install texlive-full
+	# Instala pacote de fontes (incluindo Trebuchet e Georgia)
 	sudo apt-get install ttf-mscorefonts-installer
