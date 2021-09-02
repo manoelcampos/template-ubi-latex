@@ -201,13 +201,9 @@ A seguir é listado o conteúdo de tal directório.
 
 == Autores
 
-* Autor desta versão do template
-
-** Manoel Campos da Silva Filho - Departamento de Informática (DI/UBI)
-* Autores da http://www.e-projects.ubi.pt/latex/template.html[versão original]
-
-** João Ferro, Norberto Barroca, Rui Paulo - Instituto de Telecomunicações, Departamento de Engenharia Eletromecânica (DEM/UBI)
-** Paulo Machado - Departamento de Ciências Aeroespaciais (DCA/UBI)
+- João Ferro, Norberto Barroca, Luís Borges, Rui Paulo, Aleksandra Nadziejko - Instituto de Telecomunicações, Departamento de Engenharia Eletromecânica (DEM/UBI)
+- Paulo Machado - Departamento de Ciências Aeroespaciais (DCA/UBI)
+- Manoel Campos da Silva Filho - Departamento de Informática (DI/UBI)
 
 == AVISO
 
