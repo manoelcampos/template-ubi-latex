@@ -90,7 +90,11 @@ Para isto, consulte a secção "Ficheiros do modelo" abaixo;
 IMPORTANT: Ao usar o template, você precisa apenas alterar o link do PDF para apontar pro seu repositório,
 editando este arquivo e alterando o atributo `:pdf_link` no topo dele.
 
-== Como utilizar o modelo para escrever sua tese
+== Como utilizar o modelo pelo Overleaf para escrever sua tese
+
+O https://www.overleaf.com[overleaf.com] é a forma mais prática para escrever documentos LaTeX, sem precisar instalar nada no seu computador. Para usar o template lá, basta aceder a https://www.overleaf.com/latex/templates/template-ubi-unofficial/dtvmtrmzyfjv[este link].
+
+== Como utilizar o modelo no seu computador para escrever sua tese
 
 Para utilizar o modelo são necessários alguns softwares instalados em seu sistema operativo.
 O modelo pode ser utilizado para compilar teses em diferentes sistemas operativos como Windows, Linux e Mac OSX.
