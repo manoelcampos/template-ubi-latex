@@ -136,14 +136,14 @@
 %%Usar \minitoc para colocar o mini índice de capítulo
 
 %% Verificar se saída é pdf directo e ajustar o formato imagens a isso
-%\usepackage{ifpdf}
+\usepackage{ifpdf}
 \ifpdf
 	\usepackage[pdftex]{graphicx}							%Inserir gráficos  http://ctan.org/pkg/graphicx
 	\DeclareGraphicsExtensions{.jpg,.png,.pdf} 					%Pdf directo apenas compativel com jpg, png...
 	\usepackage[pagebackref,hyperindex=true]{hyperref}
 \else
 	\usepackage{graphicx}
-	\DeclareGraphicsExtensions{.jpg,.png,.ps,.eps}						%DVI directo apenas compativel com ps, eps...
+	\DeclareGraphicsExtensions{.jpg,.png,.ps,.eps,.pdf}						%DVI directo apenas compativel com ps, eps...
 	%\usepackage[dvipdfm,pagebackref,hyperindex=true]{hyperref}
 	\usepackage[pagebackref,hyperindex=true]{hyperref}
 \fi
