@@ -235,6 +235,19 @@
 	\cleardoublepage
 }
 
+\newcommand{\thesisfunding}[1]{
+	\newpage
+	\phantomsection \label{funding}
+	\addcontentsline{toc}{chapter\label{funding}}{\fundingname}
+	\section*{\titulos\fundingname}
+	\begin{flushright}
+		\vspace*{0.03cm}\includegraphics[height=3cm]{images/logo_ubi_vprincipal}\\
+	\end{flushright}
+	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
 %Dedicatória
 \newcommand{\thesisdedication}[1]{
 	\newpage
