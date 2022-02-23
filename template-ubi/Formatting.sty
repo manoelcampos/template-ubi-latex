@@ -93,19 +93,23 @@
 \ProvidesPackage{template-ubi/Formatting}[2016/06/14 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
-\usepackage{acronym,gensymb,booktabs,verbatimbox,float}
+\usepackage{gensymb,booktabs,verbatimbox,float}
 \setlength{\aboverulesep}{0pt}
 \setlength{\belowrulesep}{0pt}
 
 \usepackage{array,verbatim}
 % mathspec loads fontspec: https://tex.stackexchange.com/questions/359704/fontspec-mathspec-clash
-\usepackage{amsmath,mathspec,amscd,amsthm,xspace}	%Pacotes matemáticos 
+\usepackage{commath, mathtools,amsmath,amscd,amsthm,xspace}
 \usepackage{amssymb} %Fontes extra para matemáticos - http://www.ctan.org/tex-archive/fonts/amsfonts
 
 %%Para algoritmos  http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
-\usepackage{algorithm}
-%\usepackage[ruled, linesnumbered]{algorithm2e}
+%\usepackage{algorithm}
+\usepackage[linesnumbered,ruled,norelsize]{algorithm2e}
 \usepackage[noend]{algorithmic}
+
+% Gerar lista de abreviações
+% https://ctan.dcc.uchile.cl/macros/latex/contrib/nomencl/
+\usepackage{nomencl} 
 
 % Descomentar para colocar tipo de letra aproximado ao Trebuchet nos ambientes matemáticos
 %\usepackage[math]{kurier} 
@@ -126,7 +130,7 @@
 
 \setlength{\parindent}{0pt} %Sem tabulação em cada novo parágrafo
 % \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip http://www.ctan.org/pkg/parskip
-% \setlength{\parskip}{0.53cm}
+\setlength{\parskip}{0.25cm}
 
 %% O código seguinte permite gerar um mini indice de capitulo (não referido no despacho reitoral)
 % \usepackage[nottoc, notlof, notlot]{tocbibind}
@@ -149,7 +153,7 @@
 \fi
 
 %Directorios onde por defeito serão buscadas as imagens a serem utilizadas na tese
-\graphicspath{{.}{images/}{imagens/}}	
+%\graphicspath{{.}{images/}{imagens/}}	
 
 %%Passar para português
 %Descomentar para escrever em Português em PDFLaTeX  http://www.ctan.org/pkg/babel
@@ -164,12 +168,13 @@
 % Número do ciclo de estudos
 \newcommand{\studiescyclenumber}[1]{\def\studiescyclenumberstr{#1}}
 % Texto que sucede o número do ciclo de estudos
-\newcommand{\studiescycle}{cycle studies}
+\newcommand{\studiescycle}{ciclo de estudos}
 \newcommand{\candidate}{Candidate}
 \newcommand{\thanksname}{Acknowledgements}
+\newcommand{\fundingname}{} %\newcommand{\fundingname}{Funding}
 \newcommand\dedicationname{Dedication}
 \newcommand\prefacename{Preface}
-\newcommand\listacronymname{Acronyms and Abbreviations}
+\renewcommand{\nomname}{Acronyms and Abbreviations}
 \providecommand\listalgorithmname{List of Algorithms}
 
 \newcommand\contentsname{Contents}
@@ -210,9 +215,10 @@
 	\renewcommand{\candidate}{Candidato}
 	\renewcommand{\studiescycle}{ciclo de estudos}
 	\renewcommand{\thanksname}{Agradecimentos}
+	\renewcommand{\fundingname}{} %\renewcommand{\fundingname}{Financiamento}
 	\renewcommand{\dedicationname}{Dedicatória}
 	\renewcommand{\listalgorithmname}{Lista de Algorithmos}
-	\renewcommand{\listacronymname}{Lista de Acrônimos}	
+	\renewcommand{\nomname}{Lista de Acrônimos}	
 }
 
 % New commands created by Manoel Campos da Silva Filho - http://manoelcampos.com
@@ -300,8 +306,8 @@
 \newcommand{\thesisresumoalargado}[1]{
 	\newpage
 	\phantomsection \label{resumo-alargado}
-	\addcontentsline{toc}{chapter\label{resumo-alargado}}{Resumo alargado}
-	\section*{\titulos{Resumo alargado}}
+	\addcontentsline{toc}{chapter\label{resumo-alargado}}{Resumo Alargado}
+	\section*{\titulos{Resumo Alargado}}
 	\vspace{0.5cm}
 	#1
 	\cleardoublepage
@@ -356,15 +362,13 @@
 	\cleardoublepage
 }
 
-\newcommand{\thesisacronyms}[1]{
+\newcommand{\thesisacronyms}{
 	\newpage
-	\phantomsection \label{listacronymname}
-	\addcontentsline{toc}{chapter\label{listacronymname}}{\listacronymname}
+	\phantomsection \label{nomname}
+	\addcontentsline{toc}{chapter\label{nomname}}{\nomname}
 	\newpage
-
-	\section*{\titulos\listacronymname}
-		\vspace{0.5cm}
-		#1
+	\printnomenclature
+	
 	\cleardoublepage
 }
 
@@ -413,8 +417,6 @@
 % incluir \paragraph no indice
 % \setcounter{tocdepth}{5}
 
-%%Comandos e atalhos para algumas funções matemáticas
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \def\abs{\operatorname{abs}}
 \def\argmax{\operatornamewithlimits{arg\,max}}
 \def\argmin{\operatornamewithlimits{arg\,min}}

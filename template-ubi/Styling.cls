@@ -709,9 +709,9 @@
 \DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
 \DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
 
-\newcommand\@pnumwidth{1.55em}
-\newcommand\@tocrmarg{2.55em}
-\newcommand\@dotsep{4.5}
+\renewcommand\@pnumwidth{1.55em}
+\renewcommand\@tocrmarg{2.55em}
+\renewcommand\@dotsep{4.5}
 \setcounter{tocdepth}{2}
 
 \newcommand\tableofcontents{%
