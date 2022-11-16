@@ -42,7 +42,7 @@ que conta com os seguintes recursos e características:
  (como agradecimentos, dedicatória, lista de acrônimos, lista de algoritmos, etc)*:
  Na versão anterior, apenas elementos padrões do latex (como capítulos, secções e listas de figuras)
  eram traduzidos de acordo com o idioma escolhido pelo utilizador.
-* *Instruções completas com todos os pré-requisitos para compilar o template em sistemas Linux, Windows e Mac OSX:* mostra tudo que um usuário iniciante precisa
+* *Instruções completas com todos os pré-requisitos para compilar o template em sistemas Linux, Windows e macOS:* mostra tudo que um usuário iniciante precisa
  saber para configurar seu sistema operativo e assim compilar o template.
 * *Criação dos seguintes comandos para definir informações da tese/dissertação dentro do documento do utilizador:*
 ** \thesisauthors : nome do autor
@@ -97,14 +97,14 @@ O https://www.overleaf.com[overleaf.com] é a forma mais prática para escrever 
 == Como utilizar o modelo no seu computador para escrever sua tese
 
 Para utilizar o modelo são necessários alguns softwares instalados em seu sistema operativo.
-O modelo pode ser utilizado para compilar teses em diferentes sistemas operativos como Windows, Linux e Mac OSX.
+O modelo pode ser utilizado para compilar teses em diferentes sistemas operativos como Windows, Linux e macOS.
 A seguir são apresentados mais detalhes.
 
 === Editor de documentos LaTeX
 
 Para criar e editar ficheiros tex, apesar de não ser um pré-requisito, o mais recomendável é utilizar um editor LaTeX específico.
 No entanto, pode-se editar os ficheiros tex em qualquer editor de texto que suporte codificação de caracteres em UTF-8
-(como o Notepad do Windows ou qualquer editor de texto nativo de sistemas Linux e Mac OSX).
+(como o Notepad do Windows ou qualquer editor de texto nativo de sistemas Linux e macOS).
 
 Existem diversas alternativas de editores, tanto gratuitos como pagos.
 Um excelente editor que funciona em diversos sistemas operativos
@@ -114,7 +114,7 @@ do Texmaker e TexMakerX.
 === Pré-requisitos para compilar sua tese
 
 Para compilar sua tese utilizando este modelo é preciso ter uma uma distribuição LaTeX instalada.
-Existem distribuições disponíveis para os sistemas operativos mais conhecidos como Windows, Linux e Mac OSX,
+Existem distribuições disponíveis para os sistemas operativos mais conhecidos como Windows, Linux e macOS,
 como será visto a seguir.
 
 O compilador a ser utilizado, disponível após a instalação da distribuição LaTeX, é o _XeLaTeX_.
@@ -144,9 +144,9 @@ Os utilizadores de sistema Linux baseados em Debian (como Ubuntu e Linux Mint)
 têm que instalar também o pacote "ttf-mscorefonts-installer" para utilizar o tipo de letra _Georgia_.
 Não foram realizados testes em outras distribuições Linux.
 
-==== Utilizadores de Mac OSX
+==== Utilizadores de macOS
 
-Em sistemas Mac OSX deve ser instalada a distribuição LaTeX denominada https://tug.org/mactex/[MacTeX].
+Em sistemas macOS deve ser instalada a distribuição LaTeX denominada https://tug.org/mactex/[MacTeX].
 Adicionalmente deve ser instalada a letra _Georgia_, cujas instruções estão disponíveis em
 http://www.e-projects.ubi.pt/latex/trebuchet-macos.html.
 
@@ -174,7 +174,7 @@ Assim, verifique a documentação do seu editor para mais detalhes.
 Para os programadores que são familiarizados com o terminal,
 há um ficheiro link:Makefile[Makefile] que permite a compilação da tese
 por meio da linha de comando. Desta forma, tendo o programa _make_ instalado
-(que já vem instalado por defeito em sistemas Linux e Mac OSX),
+(que já vem instalado por defeito em sistemas Linux e macOS),
 há os comandos abaixo disponíveis:
 
 * *make* compila a tese de exemplo (ficheiro Thesis.tex) e se a compilação ocorrer com sucesso, cria o ficheiro Thesis.pdf;
