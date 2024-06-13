@@ -169,7 +169,7 @@
 % Número do ciclo de estudos
 \newcommand{\studiescyclenumber}[1]{\def\studiescyclenumberstr{#1}}
 % Texto que sucede o número do ciclo de estudos
-\newcommand{\studiescycle}{ciclo de estudos}
+\newcommand{\studiescycle}{cycle degree}
 \newcommand{\candidate}{Candidate}
 \newcommand{\thanksname}{Acknowledgements}
 \newcommand{\fundingname}{} %\newcommand{\fundingname}{Funding}
@@ -198,6 +198,7 @@
 % Comentar para escrever em modo PDFLaTeX http://www.ctan.org/tex-archive/macros/latex/contrib/polyglossia
 \newcommand{\portugues}{
 	\setmainlanguage{portuges} 	
+	\addto\captionsportuguese{\renewcommand{\studiescycle}{ciclo de estudos}}
 	\addto\captionsportuguese{\renewcommand{\contentsname}{Índice}}
 	\addto\captionsportuguese{\renewcommand{\indexname}{Índice Remissivo}}
 	\addto\captionsportuguese{\renewcommand{\prefacename}{Prefácio}}
