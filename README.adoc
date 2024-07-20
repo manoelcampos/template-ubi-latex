@@ -196,8 +196,8 @@ A seguir é listado o conteúdo de tal directório.
  outro ficheiro de acordo com a norma a utilizar (deixada em aberto pelo despacho).
  Se incluíres um novo ficheiro de estilo bibliográfico, o nome deste ficheiro
  deve ser informado no comando _\thesisbibliography_ dentro do ficheiro _Thesis.tex_.
- Os ficheiros .bst adicionais são alguns modelos bibliográficos disponibilizados
- por algumas editoras de artigos científicos.
+ Os ficheiros .bst adicionais são alguns modelos de estilos bibliográficos disponibilizados
+ por algumas editoras de artigos científicos. Outros modelos de estilo bibliográfico podem ser encontrados no seguinte site : https://ctan.org/topic/bibtex-sty?lang=en[CTAN].
 
 == Licença
 
