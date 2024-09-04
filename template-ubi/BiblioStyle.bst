@@ -26,7 +26,6 @@ ENTRY
     journal
     key
     month
-    note
     number
     organization
     pages
@@ -559,7 +558,7 @@ FUNCTION {format.in.ed.booktitle}
 
 FUNCTION {empty.misc.check}
 { author empty$ title empty$ howpublished empty$
-  month empty$ year empty$ note empty$
+  month empty$ year empty$ empty$
   and and and and and
   key empty$ not and
     { "all relevant fields are empty in " cite$ * warning$ }
@@ -787,7 +786,7 @@ FUNCTION {fin.entry}
 
 % Webpage entry type.
 % Title and url fields required;
-% author, note, year, month, and lastchecked fields optional
+% author, year, month, and lastchecked fields optional
 % See references 
 %   ISO 690-2 http://www.nlc-bnc.ca/iso/tc46sc9/standard/690-2e.htm
 %   http://www.classroom.net/classroom/CitingNetResources.html
@@ -822,7 +821,6 @@ FUNCTION {webpage}
   % reason we would want to put them here is if we were to decide that
   % they should go in front of the rather miscellaneous information in 'note'.
   new.block
-  note output
   fin.entry
 }
 % ...urlbst to here
@@ -845,7 +843,6 @@ FUNCTION {article}
     }
   if$
   new.block
-  note output
   fin.entry
 }
 
@@ -878,7 +875,6 @@ FUNCTION {book}
   format.edition output
   format.date "year" output.check
   new.block
-  note output
   fin.entry
 }
 
@@ -893,7 +889,6 @@ FUNCTION {booklet}
   address output
   format.date output
   new.block
-  note output
   fin.entry
 }
 
@@ -928,7 +923,6 @@ FUNCTION {inbook}
   format.edition output
   format.date "year" output.check
   new.block
-  note output
   fin.entry
 }
 
@@ -955,7 +949,6 @@ FUNCTION {incollection}
     }
   if$
   new.block
-  note output
   fin.entry
 }
 
@@ -990,7 +983,6 @@ FUNCTION {inproceedings}
     }
   if$
   new.block
-  note output
   fin.entry
 }
 
@@ -1027,7 +1019,6 @@ FUNCTION {manual}
   format.edition output
   format.date output
   new.block
-  note output
   fin.entry
 }
 
@@ -1043,7 +1034,6 @@ FUNCTION {mastersthesis}
   address output
   format.date "year" output.check
   new.block
-  note output
   fin.entry
 }
 
@@ -1057,7 +1047,6 @@ FUNCTION {misc}
   howpublished output
   format.date output
   new.block
-  note output
   fin.entry
   empty.misc.check
 }
@@ -1074,7 +1063,6 @@ FUNCTION {phdthesis}
   address output
   format.date "year" output.check
   new.block
-  note output
   fin.entry
 }
 
@@ -1110,7 +1098,6 @@ FUNCTION {proceedings}
     }
   if$
   new.block
-  note output
   fin.entry
 }
 
@@ -1126,7 +1113,6 @@ FUNCTION {techreport}
   address output
   format.date "year" output.check
   new.block
-  note output
   fin.entry
 }
 
@@ -1137,7 +1123,6 @@ FUNCTION {unpublished}
   title empty$ 'skip$ 'setup.inlinelink if$ % urlbst
   format.title "title" output.check
   new.block
-  note "note" output.check
   format.date output
   fin.entry
 }

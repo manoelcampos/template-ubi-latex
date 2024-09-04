@@ -430,7 +430,8 @@
         \fi
       \fi
       \interlinepenalty\@M
-			\vspace{1.2cm}											%From UBI Word template
+      		% estava 1.2 e foi alterado para 1.5 conforme prof Mario
+			\vspace{1.5cm}	
       \titulos #1\par\nobreak						%Changed font type
       %\hrulefill													%No rule (no minitoc)
     \end{flushleft}										%Was flushright => changes chapter alignment..
@@ -821,7 +822,7 @@
   \kern-3\p@
   \hrule\@width.4\columnwidth
   \kern2.6\p@}
-\@addtoreset{footnote}{chapter}
+% \@addtoreset{footnote}{chapter} % habilitado: reinicia numeração de notas de rodapé a cada capítulo
 \newcommand\@makefntext[1]{%
     \parindent 1em%
     \noindent

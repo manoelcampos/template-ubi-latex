@@ -303,6 +303,7 @@ ENTRY
     author
     booktitle
     chapter
+    city
     day
     dayfiled
     doi					%% GQMJr
@@ -319,7 +320,6 @@ ENTRY
     month
     monthfiled
     nationality
-    note
     number
     organization
     pages
@@ -801,7 +801,7 @@ FUNCTION {either.or.check}
 
 FUNCTION {empty.entry.warn}
 { author empty$ title empty$ howpublished empty$
-  month empty$ year empty$ note empty$ url empty$
+  month empty$ year empty$ empty$ url empty$
   and and and and and and
     { "all relevant fields are empty in " cite$ * warning$ }
     'skip$
@@ -1303,7 +1303,15 @@ FUNCTION {format.address}
   if$
 }
 
+FUNCTION {location} {city}
 
+FUNCTION {format.city}
+{
+  city empty$
+    { "" }
+    { city }
+  if$
+}
 
 %% author/editor names
 
@@ -1450,7 +1458,6 @@ FUNCTION {format.article.title}
 { title duplicate$ empty$ 'skip$
     { this.to.prev.status
       this.status.std
-      "t" change.case$
     }
   if$
   "title" bibinfo.check
@@ -1747,33 +1754,6 @@ FUNCTION {format.tech.report.number}
 }
 
 
-
-%% note
-
-FUNCTION {format.note}
-{ note empty$
-    { "" }
-    { this.to.prev.status
-      this.status.std
-      punct.period 'this.status.punct :=
-      note #1 #1 substring$
-      duplicate$ "{" =
-        { skip$ }
-        { status.cap
-          { "u" }
-          { "l" }
-        if$
-        change.case$
-        }
-      if$
-      note #2 global.max$ substring$ * "note" bibinfo.check
-      cap.yes  'status.cap :=
-    }
-  if$
-}
-
-
-
 %% patent
 
 FUNCTION {format.patent.date}
@@ -2037,7 +2017,6 @@ FUNCTION {article}
   format.pages output
   format.date "year" output.warn
   format.doi output
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2052,7 +2031,7 @@ FUNCTION {book}
     { format.authors output.nonnull }
   if$
   name.or.dash
-  format.book.title.edition output
+  format.book.title.edition "Book" output
   format.series output
   author empty$
     { skip$ }
@@ -2061,8 +2040,8 @@ FUNCTION {book}
   format.address.publisher.date output
   format.volume output
   format.number output
+  format.pages output
   format.isbn output		%% GQMJr
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2080,7 +2059,6 @@ FUNCTION {booklet}
   format.address "address" bibinfo.check output
   format.date output
   format.isbn output		%% GQMJr
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2098,7 +2076,6 @@ FUNCTION {electronic}
   format.organization "organization" bibinfo.check output
   format.address "address" bibinfo.check output
   format.isbn output		%% GQMJr
-  format.note output
   format.url output
   fin.entry
   empty.entry.warn
@@ -2122,7 +2099,6 @@ FUNCTION {inbook}
   format.chapter output
   format.pages output
   format.isbn output		%% GQMJr
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2144,7 +2120,6 @@ FUNCTION {incollection}
   format.chapter output
   format.pages output
   format.isbn output		%% GQMJr
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2157,7 +2132,8 @@ FUNCTION {inproceedings}
   format.authors "author" output.warn
   name.or.dash
   format.article.title "title" output.warn
-  format.in.booktitle "booktitle" output.warn
+  format.journal "journal" bibinfo.check "journal" output.warn
+  format.city output
   format.series output
   format.editors output
   format.volume output
@@ -2173,7 +2149,6 @@ FUNCTION {inproceedings}
   format.isbn output		%% GQMJr
   format.issn output		%% GQMJr
   format.pages output
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2190,13 +2165,12 @@ FUNCTION {manual}
   format.organization "organization" bibinfo.check output
   format.address "address" bibinfo.check output
   format.date output
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
 }
 
-FUNCTION {mastersthesis}
+FUNCTION {mthesis}
 { std.status.using.comma
   start.entry
   if.url.alt.interword.spacing
@@ -2207,7 +2181,6 @@ FUNCTION {mastersthesis}
   format.school "school" bibinfo.warn output
   format.address "address" bibinfo.check output
   format.date "year" output.warn
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2221,14 +2194,8 @@ FUNCTION {misc}
   name.or.dash
   format.article.title output
   format.howpublished "howpublished" bibinfo.check output 
-  format.organization "organization" bibinfo.check output
-  format.address "address" bibinfo.check output
-  format.pages output
-  format.date output
-  format.note output
   format.url output
   fin.entry
-  empty.entry.warn
   if.url.std.interword.spacing
 }
 
@@ -2241,7 +2208,6 @@ FUNCTION {patent}
   format.article.title output
   format.patent.nationality.type.number output
   format.patent.date output
-  format.note output
   format.url output
   fin.entry
   empty.entry.warn
@@ -2261,7 +2227,6 @@ FUNCTION {periodical}
   format.organization "organization" bibinfo.check output
   format.issn output		%% GQMJr
   format.date "year" output.warn
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2275,11 +2240,11 @@ FUNCTION {phdthesis}
   name.or.dash
   format.article.title "title" output.warn
   format.phd.thesis.type output.nonnull
-  format.school "school" bibinfo.warn output
+  format.pages output
+  format.institution "institution" bibinfo.warn output
   format.address "address" bibinfo.check output
   format.isbn output		%% GQMJr
   format.date "year" output.warn
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2302,7 +2267,6 @@ FUNCTION {proceedings}
     }
   if$
   format.doi output		%% GQMJr
-  format.note output
   %format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2319,7 +2283,6 @@ FUNCTION {standard}
   format.organization.institution.standard.type.number output
   format.revision output
   format.date output
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2337,7 +2300,6 @@ FUNCTION {techreport}
   format.address "address" bibinfo.check output
   format.tech.report.number output.nonnull
   format.date "year" output.warn
-  format.note output
   format.url output
   fin.entry
   if.url.std.interword.spacing
@@ -2351,7 +2313,6 @@ FUNCTION {unpublished}
   name.or.dash
   format.article.title "title" output.warn
   format.date output
-  format.note "note" output.warn
   format.url output
   fin.entry
   if.url.std.interword.spacing

@@ -30,26 +30,34 @@ urlcolor=linkcol   %Cor das hiperligações
             \vspace*{0.03cm}\includegraphics[height=3cm]{logo_ubi_vprincipal}\\
             %\rostoubi UNIVERSIDADE DA BEIRA INTERIOR\\
             %\rostofac \facultynamestr\\
-            \vspace{5.6cm}%7.6/6.6 - 1
+            \vspace{3cm}%7.6/6.6 - 1
 
             \rostotitulo \textbf{\thesistitlestr} \\
             \ifdefined\thesissubtitlestr
                 \rostosubtit \textbf{\thesissubtitlestr}\\
             \fi
-            \vspace{1.6cm}%1.8
+            \vspace{1.0cm}%1.8
             \rostonomes \textbf{\thesisauthorsstr} \\
-            \vspace{1.4cm}%1.4
+            \vspace{1.0cm}%1.4
             % \rostooutros Tese para obtenção do Grau de Doutor em\\
             \rostooutros \thesistypestr \\
             \rostonomes \textbf{\thesiscoursestr}\\
             \rostooutros (\studiescyclenumberstr \ \studiescycle)\\
-            \vspace{3.3cm}%3.2
+            \vspace{0.8cm}%0.25cm
             %\rostooutros \thesissupervisorsstr
 
             %\rostonomesdeorientor Orientador: Name of your supervisor\\
-            \thesissupervisorsstr
-            %Co-orientador: Prof. Doutor Nome Completo\\
-            \vspace{1.4cm}
+            \begin{flushright}
+            	\thesissupervisorsstr
+            \end{flushright}
+            
+            %\vspace{0.1cm}
+            \ifdefined\thesisjurystr
+	            \begin{flushright}
+	            	\thesisjurystr
+	            \end{flushright}
+            \fi
+            \vspace{1.1cm}
 
             %\rostooutros
             \rostooutros \textbf{\thesislocalanddatestr}

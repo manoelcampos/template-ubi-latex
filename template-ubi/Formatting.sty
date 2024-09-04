@@ -2,6 +2,7 @@
 %% Este é o ficheiro Formatting.sty - NÃO EDITAR excepto a secção hypersetup!
 %% Define a formatação a ser usada em teses apresentadadas na Universidade da Beira Interior
 %
+%% Versão 3.0.3 - 2024/09/04 - Corrige problemas de compilação de arquivos bib com campos note. Corrige problemas de formatação de referências. Adiciona comandos \thesisjurystr e \thesisintegrityname. Outras correções menores. (Manoel Campos da Silva Filho http://github.com/manoelcampos)
 %% Versão 3.0.2 - 2022/11/16 - Corrige problemas de build (Manoel Campos da Silva Filho http://github.com/manoelcampos)
 %% Versão 3.0.1 - 2021/05/30 - Adaptações para a versão oficial 3.0 (Manoel Campos da Silva Filho http://github.com/manoelcampos)
 %% Versão 3.0   - 2020/01/31 - Adaptado às normas do despacho Reitoral nº 2019/R/630
@@ -91,7 +92,7 @@
 %%		junto com este programa, se não, veja <http://www.gnu.org/licenses/>.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{template-ubi/Formatting}[2016/06/14 v3.0.1 Modelo LaTeX de teses da Universidade da Beira Interior]
+\ProvidesPackage{template-ubi/Formatting}[2024/09/04 v3.0.3 Modelo LaTeX de teses da Universidade da Beira Interior]
 
 % Pacotes a incluir
 \usepackage{gensymb,booktabs,verbatimbox,float}
@@ -173,6 +174,7 @@
 \newcommand{\candidate}{Candidate}
 \newcommand{\thanksname}{Acknowledgements}
 \newcommand{\fundingname}{} %\newcommand{\fundingname}{Funding}
+\newcommand{\thesisintegrityname}{Declaração de Integridade}
 \newcommand\dedicationname{Dedication}
 \newcommand\prefacename{Preface}
 \renewcommand{\nomname}{Acronyms and Abbreviations}
@@ -218,6 +220,7 @@
 	\renewcommand{\studiescycle}{ciclo de estudos}
 	\renewcommand{\thanksname}{Agradecimentos}
 	\renewcommand{\fundingname}{} %\renewcommand{\fundingname}{Financiamento}
+	\renewcommand{\thesisintegrityname}{Declaração de Integridade}
 	\renewcommand{\dedicationname}{Dedicatória}
 	\renewcommand{\listalgorithmname}{Lista de Algorithmos}
 	\renewcommand{\nomname}{Lista de Acrônimos}	
@@ -230,6 +233,7 @@
 \newcommand{\thesistype}[1]{\def\thesistypestr{#1}}
 \newcommand{\thesislocalanddate}[1]{\def\thesislocalanddatestr{#1}}
 \newcommand{\thesissupervisors}[1]{\def\thesissupervisorsstr{#1}}
+\newcommand{\thesisjury}[1]{\def\thesisjurystr{#1}}
 \newcommand{\thesiscourse}[1]{\def\thesiscoursestr{#1}}
 
 %%Agradecimentos
@@ -239,6 +243,23 @@
 	\addcontentsline{toc}{chapter\label{thanks}}{\thanksname}
 	\section*{\titulos\thanksname}
 	\vspace{0.5cm}
+	#1
+	\cleardoublepage
+}
+
+
+\newcommand{\thesisintegrity}[1]{
+	\newpage
+	\phantomsection \label{integrity}
+	\addcontentsline{toc}{chapter\label{integrity}}{\thesisintegrityname}
+	
+	\begin{flushright}
+		\vspace*{0.03cm}\includegraphics[height=3cm]{images/logo_ubi_vprincipal}\\
+	\end{flushright}
+	\vspace{0.5cm}
+	\begin{center}
+		\section*{\titulos\thesisintegrityname}
+	\end{center}
 	#1
 	\cleardoublepage
 }
